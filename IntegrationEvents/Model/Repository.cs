@@ -34,15 +34,15 @@ namespace Dal
             _collection.DeleteOneAsync(Builders<T>.Filter.Eq("Id", id));
         }
 
-        public async Task<T> Get(int id)
+        public T Get(int id)
         {
-            var data = await _collection.FindAsync(Builders<T>.Filter.Eq("Id", id));
+            var data = _collection.FindSync(Builders<T>.Filter.Eq("Id", id));
             return data.FirstOrDefault();
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public  IEnumerable<T> GetAll()
         {
-            var all = (await _collection.FindAsync(_ => true)).ToList();
+            var all =  _collection.FindSync(_ => true).ToList();
             return all;
         }
 

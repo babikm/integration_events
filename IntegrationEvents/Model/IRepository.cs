@@ -7,8 +7,8 @@ namespace Dal
 {
     public interface IRepository<T> where T : class
     {
-        Task<T> Get(int id);
-        Task<IEnumerable<T>> GetAll();
+        T Get(int id);
+        IEnumerable<T> GetAll();
         void Create(T @event);
         void Update(T @event);
         void Delete(T @event);

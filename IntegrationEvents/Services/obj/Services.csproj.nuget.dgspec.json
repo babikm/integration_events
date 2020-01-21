@@ -29,7 +29,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
+                "projectPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
