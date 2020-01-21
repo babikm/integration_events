@@ -1,6 +1,7 @@
 ﻿using Abstract;
 using Dal;
 using Microsoft.Extensions.DependencyInjection;
+using Services;
 using System;
 
 namespace Resolver
@@ -10,7 +11,6 @@ namespace Resolver
         public static void RegisterServices(IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
             services.AddScoped<IEventService, EventService>();
         }
     }
