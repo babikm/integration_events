@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Model.csproj",
-      "projectName": "Model",
-      "projectPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Model.csproj",
+      "projectUniqueName": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
+      "projectName": "Dal",
+      "projectPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
       "packagesPath": "C:\\Users\\Majkel\\.nuget\\packages\\",
       "outputPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\obj\\",
       "projectStyle": "PackageReference",

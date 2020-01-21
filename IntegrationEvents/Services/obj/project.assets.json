@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "Dal/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Dal.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Dal.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Dal/1.0.0": {
+      "type": "project",
+      "path": "../Model/Dal.csproj",
+      "msbuildProject": "../Model/Dal.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "Dal >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Majkel\\.nuget\\packages\\": {},
@@ -36,7 +55,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
+              "projectPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
