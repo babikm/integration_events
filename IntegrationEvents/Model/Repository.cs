@@ -2,16 +2,26 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Dal
 {
     public class Repository<T> : IRepository<T> where T : class
     {
         private IMongoDatabase _database;
+        private string _collectionName;
+        private IMongoCollection<T> _collection;
+
+        public Repository(IMongoDatabase database, string collectionName)
+        {
+            _database = database;
+            _collectionName = collectionName;
+            _collection = database.GetCollection<T>(collectionName);
+        }
 
         public void Create(T @event)
         {
-            throw new NotImplementedException();
+            _collection.InsertOne(@event);
         }
 
         public void Delete(T @event)
@@ -21,22 +31,25 @@ namespace Dal
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _collection.DeleteOneAsync(Builders<T>.Filter.Eq("Id", id));
         }
 
-        public T Get(int id)
+        public async Task<T> Get(int id)
         {
-            throw new NotImplementedException();
+            var data = await _collection.FindAsync(Builders<T>.Filter.Eq("Id", id));
+            return data.FirstOrDefault();
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            throw new NotImplementedException();
+            var all = (await _collection.FindAsync(_ => true)).ToList();
+            return all;
         }
 
         public void Update(T @event)
         {
             throw new NotImplementedException();
         }
+
     }
 }
