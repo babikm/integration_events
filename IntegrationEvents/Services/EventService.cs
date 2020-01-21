@@ -44,6 +44,9 @@ namespace Services
             return _unitOfWork.EventRepository.GetAll().Select(x => new EventDto
             {
                Id = x.EventId,
+               Name = x.Name,
+               Date = x.Date,
+               Description = x.Description
             }).ToList();
         }
 

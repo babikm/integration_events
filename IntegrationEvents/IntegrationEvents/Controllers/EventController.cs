@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abstract;
 using Abstract.DTO;
+using Dal.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,15 +28,16 @@ namespace WebApp.Controllers
 
         // GET: api/Event/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public Event Get(int id)
         {
-            return "value";
+            return _eventService.Get(id);
         }
 
         // POST: api/Event
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Event @event)
         {
+            _eventService.Add(@event);
         }
 
         // PUT: api/Event/5
@@ -45,9 +47,10 @@ namespace WebApp.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
+        [HttpPost("Delete/{id}")]
         public void Delete(int id)
         {
+            _eventService.Delete(id);
         }
     }
 }
