@@ -12,6 +12,8 @@ namespace Resolver
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IEventService, EventService>();
+            services.AddScoped<IUserService, UserService>();
+
         }
     }
 }

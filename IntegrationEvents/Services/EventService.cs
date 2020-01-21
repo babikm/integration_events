@@ -4,6 +4,7 @@ using Dal;
 using Dal.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,23 +31,25 @@ namespace Services
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _unitOfWork.EventRepository.Delete(id);
         }
 
         public Event Get(int id)
         {
-            throw new NotImplementedException();
+            return _unitOfWork.EventRepository.Get(id);
         }
 
-        public Task<IEnumerable<EventDto>> GetEvents()
+        public IEnumerable<EventDto> GetEvents()
         {
-            var all = _unitOfWork.EventRepository.GetAll().Select(x => new EventDto):
-            return all.ToList();
+            return _unitOfWork.EventRepository.GetAll().Select(x => new EventDto
+            {
+               Id = x.EventId,
+            }).ToList();
         }
 
         public void Update(Event @event)
         {
-            throw new NotImplementedException();
+            _unitOfWork.EventRepository.Update(@event);
         }
     }
 }
