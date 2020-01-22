@@ -29,12 +29,12 @@ namespace Dal
             throw new NotImplementedException();
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _collection.DeleteOneAsync(Builders<T>.Filter.Eq("Id", id));
         }
 
-        public T Get(int id)
+        public T Get(string id)
         {
             var data = _collection.FindSync(Builders<T>.Filter.Eq("Id", id));
             return data.FirstOrDefault();

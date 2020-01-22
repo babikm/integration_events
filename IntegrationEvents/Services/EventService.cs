@@ -29,12 +29,12 @@ namespace Services
             });
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _unitOfWork.EventRepository.Delete(id);
         }
 
-        public Event Get(int id)
+        public Event Get(string id)
         {
             return _unitOfWork.EventRepository.Get(id);
         }

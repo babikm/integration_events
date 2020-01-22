@@ -28,7 +28,7 @@ namespace WebApp.Controllers
 
         // GET: api/Event/5
         [HttpGet("{id}", Name = "Get")]
-        public Event Get(int id)
+        public Event Get(string id)
         {
             return _eventService.Get(id);
         }
@@ -42,13 +42,14 @@ namespace WebApp.Controllers
 
         // PUT: api/Event/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put([FromBody] Event @event)
         {
+            _eventService.Update(@event);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpPost("Delete/{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _eventService.Delete(id);
         }

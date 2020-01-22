@@ -10,9 +10,9 @@ namespace Abstract
     public interface IEventService
     {
         IEnumerable<EventDto> GetEvents();
-        Event Get(int id);
+        Event Get(string id);
         void Add(Event @event);
-        void Delete(int id);
+        void Delete(string id);
         void Update(Event @event);
 
     }

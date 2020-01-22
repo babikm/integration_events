@@ -7,12 +7,12 @@ namespace Dal
 {
     public interface IRepository<T> where T : class
     {
-        T Get(int id);
+        T Get(string id);
         IEnumerable<T> GetAll();
         void Create(T @event);
         void Update(T @event);
         void Delete(T @event);
-        void Delete(int id);
+        void Delete(string id);
 
     }
 }
