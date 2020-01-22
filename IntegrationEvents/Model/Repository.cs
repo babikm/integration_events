@@ -48,7 +48,6 @@ namespace Dal
 
         public void Update(T @event)
         {
-            throw new NotImplementedException();
         }
 
     }

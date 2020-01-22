@@ -43,7 +43,7 @@ namespace Services
         {
             return _unitOfWork.EventRepository.GetAll().Select(x => new EventDto
             {
-               Id = x.EventId,
+               Id = x.Id,
                Name = x.Name,
                Date = x.Date,
                Description = x.Description
