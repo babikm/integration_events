@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using Dal.Model;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -48,6 +49,7 @@ namespace Dal
 
         public void Update(T @event)
         {
+            
         }
 
     }

@@ -16,6 +16,6 @@ namespace Dal.Model
         public string Description { get; set; }
         public DateTime Date { get; set; }
         public string Spot { get; set; }
-        public IEnumerable<User> UserList { get; set; }
+        public IList<User> UserList { get; set; }
     }
 }

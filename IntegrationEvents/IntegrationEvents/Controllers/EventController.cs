@@ -48,7 +48,7 @@ namespace WebApp.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpPost("Delete/{id}")]
+        [HttpDelete("{id}")]
         public void Delete(string id)
         {
             _eventService.Delete(id);

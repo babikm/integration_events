@@ -50,6 +50,16 @@ namespace Services
             }).ToList();
         }
 
+        public bool Join(User user)
+        {
+            //if user is logged in
+            //get user id
+            //add to list
+            Event @event = new Event();
+            @event.UserList.Add(user);
+            return true;
+        }
+
         public void Update(Event @event)
         {
             _unitOfWork.EventRepository.Update(@event);
