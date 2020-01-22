@@ -56,8 +56,13 @@ namespace Services
             //get user id
             //add to list
             Event @event = new Event();
-            @event.UserList.Add(user);
-            return true;
+            var isJoined = @event.UserList.Contains(user);
+            if(!isJoined)
+            {
+                @event.UserList.Add(user);
+                return true;
+            }
+            return false;
         }
 
         public void Update(Event @event)

@@ -49,7 +49,7 @@ namespace Dal
 
         public void Update(T @event)
         {
-            
+            //_collection.ReplaceOne(x=>x.Id==)
         }
 
     }
