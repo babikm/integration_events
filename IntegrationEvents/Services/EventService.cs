@@ -24,8 +24,7 @@ namespace Services
                 Name = @event.Name,
                 Description = @event.Description,
                 Spot = @event.Spot,
-                Date = @event.Date,
-                UserList = @event.UserList
+                Date = @event.Date
             });
         }
 
@@ -50,16 +49,14 @@ namespace Services
             }).ToList();
         }
 
-        public bool Join(User user)
+        public bool Join(User user, Event @event)
         {
             //if user is logged in
-            //get user id
-            //add to list
-            Event @event = new Event();
             var isJoined = @event.UserList.Contains(user);
             if(!isJoined)
             {
                 @event.UserList.Add(user);
+                user.EventList.Add(@event);
                 return true;
             }
             return false;
@@ -67,7 +64,15 @@ namespace Services
 
         public void Update(Event @event)
         {
-            _unitOfWork.EventRepository.Update(@event);
+            _unitOfWork.EventRepository.Update(new Event 
+            {
+                Id = @event.Id,
+                Name = @event.Name,
+                Description = @event.Description,
+                Spot = @event.Spot,
+                Date = @event.Date,
+                UserList = @event.UserList
+            });
         }
     }
 }

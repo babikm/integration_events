@@ -9,9 +9,9 @@ namespace Dal
     {
         T Get(string id);
         IEnumerable<T> GetAll();
-        void Create(T @event);
-        void Update(T @event);
-        void Delete(T @event);
+        void Create(T entity);
+        void Update(T entity);
+        void Delete(T entity);
         void Delete(string id);
 
     }

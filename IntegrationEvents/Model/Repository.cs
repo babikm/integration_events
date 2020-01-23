@@ -20,12 +20,12 @@ namespace Dal
             _collection = database.GetCollection<T>(collectionName);
         }
 
-        public void Create(T @event)
+        public void Create(T entity)
         {
-            _collection.InsertOne(@event);
+            _collection.InsertOne(entity);
         }
 
-        public void Delete(T @event)
+        public void Delete(T entity)
         {
             throw new NotImplementedException();
         }
@@ -47,7 +47,7 @@ namespace Dal
             return all;
         }
 
-        public void Update(T @event)
+        public void Update(T entity)
         {
             //_collection.ReplaceOne(x=>x.Id==)
         }
