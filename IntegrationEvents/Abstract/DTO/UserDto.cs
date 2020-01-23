@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Dal.Model;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Abstract.DTO
 {
@@ -8,5 +7,7 @@ namespace Abstract.DTO
     {
         public string Id { get; set; }
         public string Username { get; set; }
+        public IList<Event> EventList { get; set; }
+
     }
 }

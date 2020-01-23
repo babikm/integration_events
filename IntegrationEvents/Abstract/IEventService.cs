@@ -13,8 +13,8 @@ namespace Abstract
         Event Get(string id);
         void Add(Event @event);
         void Delete(string id);
-        void Update(Event @event);
-        bool Join(User user, Event @event);
+        void Update(Event @event,string id);
+        bool Join(User user, string eventId);
 
     }
 }

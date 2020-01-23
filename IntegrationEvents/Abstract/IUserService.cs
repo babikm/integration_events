@@ -8,10 +8,10 @@ namespace Abstract
 {
     public interface IUserService
     {
-        IEnumerable<UserDto> GetEvents();
+        IEnumerable<UserDto> GetUsers();
         User Get(string id);
         void Add(User user);
         void Delete(string id);
-        void Update(User user);
+        void Update(User user, string id);
     }
 }

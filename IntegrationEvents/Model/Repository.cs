@@ -47,9 +47,9 @@ namespace Dal
             return all;
         }
 
-        public void Update(T entity)
+        public void Update(T entity,string id)
         {
-            //_collection.ReplaceOne(x=>x.Id==)
+
         }
 
     }

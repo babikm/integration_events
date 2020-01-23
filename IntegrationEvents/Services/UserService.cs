@@ -39,7 +39,7 @@ namespace Services
             return _unitOfWork.UserRepository.Get(id);
         }
 
-        public IEnumerable<UserDto> GetEvents()
+        public IEnumerable<UserDto> GetUsers()
         {
             return _unitOfWork.UserRepository.GetAll().Select(x => new UserDto
             {
@@ -48,17 +48,18 @@ namespace Services
             }).ToList();
         }
 
-        public void Update(User user)
+        public void Update(User user, string id)
         {
-            _unitOfWork.UserRepository.Update(new User 
-            {
-                Id = user.Id,
-                UserName = user.UserName,
-                Password = user.Password,
-                Email = user.Email,
-                FirstName = user.FirstName,
-                LastName = user.LastName
-            });
+            _unitOfWork.UserRepository.Update(user, id);
+            //    (new User 
+            //{
+            //    Id = user.Id,
+            //    UserName = user.UserName,
+            //    Password = user.Password,
+            //    Email = user.Email,
+            //    FirstName = user.FirstName,
+            //    LastName = user.LastName
+            //});
         }
     }
 }

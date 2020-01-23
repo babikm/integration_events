@@ -15,9 +15,23 @@ namespace WebApp.Controllers
     public class EventController : ControllerBase
     {
         private IEventService _eventService;
-        public EventController(IEventService eventService)
+        private IUserService _userService;
+
+        public EventController(IEventService eventService, IUserService userService)
         {
             _eventService = eventService;
+            _userService = userService;
+        }
+
+        [HttpPost("Join")]
+        public void Join(User user, string eventId)
+        {
+            user = _userService.Get("5e29cb13e0ede23cf0ca2000");
+            var @event = _eventService.Get("5e29cb43e0ede23cf0ca2001");
+            @event.UserList = new List<User>();
+            @event.UserList.Add(user);
+            Put(@event);
+            //_eventService.Join(user, eventId);
         }
         // GET: api/Event
         [HttpGet]
@@ -44,7 +58,7 @@ namespace WebApp.Controllers
         [HttpPut("{id}")]
         public void Put([FromBody] Event @event)
         {
-            _eventService.Update(@event);
+            _eventService.Update(@event, @event.Id);
         }
 
         // DELETE: api/ApiWithActions/5

@@ -20,11 +20,12 @@ namespace Services
         {
             _unitOfWork.EventRepository.Create(new Event
             {
-                Id = @event.Id,
+                //Id = @event.Id,
                 Name = @event.Name,
                 Description = @event.Description,
                 Spot = @event.Spot,
-                Date = @event.Date
+                Date = @event.Date,
+                UserList = @event.UserList
             });
         }
 
@@ -45,12 +46,14 @@ namespace Services
                Id = x.Id,
                Name = x.Name,
                Date = x.Date,
-               Description = x.Description
+               Description = x.Description,
+               UserList = x.UserList
             }).ToList();
         }
 
-        public bool Join(User user, Event @event)
+        public bool Join(User user, string eventId)
         {
+            Event @event = new Event();
             //if user is logged in
             var isJoined = @event.UserList.Contains(user);
             if(!isJoined)
@@ -62,17 +65,18 @@ namespace Services
             return false;
         }
 
-        public void Update(Event @event)
+        public void Update(Event @event, string id)
         {
-            _unitOfWork.EventRepository.Update(new Event 
-            {
-                Id = @event.Id,
-                Name = @event.Name,
-                Description = @event.Description,
-                Spot = @event.Spot,
-                Date = @event.Date,
-                UserList = @event.UserList
-            });
+            _unitOfWork.EventRepository.Update(@event, id);
+            //    (new Event
+            //{
+            //        Id=@event.Id,
+            //        Name = @event.Name,
+            //        Description = @event.Description,
+            //        Spot = @event.Spot,
+            //        Date = @event.Date,
+            //        UserList = @event.UserList
+            //});
         }
     }
 }
