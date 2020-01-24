@@ -10,6 +10,7 @@ namespace Abstract
     {
         IEnumerable<UserDto> GetUsers();
         User Get(string id);
+        User GetByUsername(string username);
         void Add(User user);
         void Delete(string id);
         void Update(User user, string id);

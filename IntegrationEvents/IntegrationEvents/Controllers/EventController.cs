@@ -7,6 +7,7 @@ using Abstract.DTO;
 using Dal.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 
 namespace WebApp.Controllers
 {
@@ -23,15 +24,14 @@ namespace WebApp.Controllers
             _userService = userService;
         }
 
-        [HttpPost("Join")]
+        [HttpPost("Join/{eventId}")]
         public void Join(User user, string eventId)
         {
-            user = _userService.Get("5e29cb13e0ede23cf0ca2000");
-            var @event = _eventService.Get("5e29cb43e0ede23cf0ca2001");
-            @event.UserList = new List<User>();
+            user = _userService.Get("5e29caf5e0ede23cf0ca1fff");
+            var @event = _eventService.Get(eventId);
             @event.UserList.Add(user);
             Put(@event);
-            //_eventService.Join(user, eventId);
+
         }
         // GET: api/Event
         [HttpGet]

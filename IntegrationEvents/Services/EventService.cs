@@ -20,7 +20,7 @@ namespace Services
         {
             _unitOfWork.EventRepository.Create(new Event
             {
-                //Id = @event.Id,
+                Id = @event.Id,
                 Name = @event.Name,
                 Description = @event.Description,
                 Spot = @event.Spot,
@@ -53,30 +53,21 @@ namespace Services
 
         public bool Join(User user, string eventId)
         {
-            Event @event = new Event();
-            //if user is logged in
-            var isJoined = @event.UserList.Contains(user);
-            if(!isJoined)
-            {
-                @event.UserList.Add(user);
-                user.EventList.Add(@event);
-                return true;
-            }
+            //Event @event = new Event();
+            ////if user is logged in
+            //var isJoined = @event.UserList.Contains(user);
+            //if(!isJoined)
+            //{
+            //    @event.UserList.Add(user);
+            //    user.EventList.Add(@event);
+            //    return true;
+            //}
             return false;
         }
 
         public void Update(Event @event, string id)
         {
-            _unitOfWork.EventRepository.Update(@event, id);
-            //    (new Event
-            //{
-            //        Id=@event.Id,
-            //        Name = @event.Name,
-            //        Description = @event.Description,
-            //        Spot = @event.Spot,
-            //        Date = @event.Date,
-            //        UserList = @event.UserList
-            //});
+            _unitOfWork.EventRepository.Update(x => x.Id == id, @event);
         }
     }
 }

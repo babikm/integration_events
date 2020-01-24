@@ -11,9 +11,8 @@ namespace Services
 {
     public class UserService : ServiceBase, IUserService
     {
-
         public UserService(IUnitOfWork unitOfWork) : base(unitOfWork)
-        {
+        { 
         }
 
         public void Add(User user)
@@ -39,27 +38,25 @@ namespace Services
             return _unitOfWork.UserRepository.Get(id);
         }
 
+        public User GetByUsername(string username)
+        {
+            var user = _unitOfWork.UserRepository.GetByUsername(username);
+            return user;
+        }
+
         public IEnumerable<UserDto> GetUsers()
         {
             return _unitOfWork.UserRepository.GetAll().Select(x => new UserDto
             {
                 Id = x.Id,
-                Username = x.UserName
+                Username = x.UserName,
+                EventCreated = x.EventCreated
             }).ToList();
         }
 
         public void Update(User user, string id)
         {
-            _unitOfWork.UserRepository.Update(user, id);
-            //    (new User 
-            //{
-            //    Id = user.Id,
-            //    UserName = user.UserName,
-            //    Password = user.Password,
-            //    Email = user.Email,
-            //    FirstName = user.FirstName,
-            //    LastName = user.LastName
-            //});
+            _unitOfWork.UserRepository.Update(x => x.Id == id, user);            
         }
     }
 }

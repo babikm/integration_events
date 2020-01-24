@@ -33,6 +33,12 @@ namespace WebApp.Controllers
             return _userService.Get(id);
         }
 
+        [HttpGet("Name/{username}", Name = "GetByUsername")]
+        public User GetByUsername(string username)
+        {
+            return _userService.GetByUsername(username);
+        }
+
         // POST: api/User
         [HttpPost]
         public void Post([FromBody] User user)

@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,9 +48,21 @@ namespace Dal
             return all;
         }
 
-        public void Update(T entity,string id)
+        public T Update(Expression<Func<T, bool>> filter, T replacement)
         {
+            return _collection.FindOneAndReplace(filter, replacement);
+        }
 
+        public async Task<T> Update(FilterDefinition<T> filter, T replacement)
+        {
+            return await _collection.FindOneAndReplaceAsync(filter, replacement);
+
+        }
+
+        public T GetByUsername(string username)
+        {
+            var user = _collection.Find(Builders<T>.Filter.Eq("UserName", username));
+            return user.FirstOrDefault();
         }
 
     }

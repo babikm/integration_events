@@ -16,7 +16,9 @@ namespace Dal.Model
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public IList<Event> EventList { get; set; }
+        public List<Event> EventCreated { get; set; }
+        public List<Event> EventJoined { get; set; }
+
 
     }
 }

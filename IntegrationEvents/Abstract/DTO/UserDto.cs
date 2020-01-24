@@ -1,4 +1,5 @@
 ﻿using Dal.Model;
+using MongoDB.Bson;
 using System.Collections.Generic;
 
 namespace Abstract.DTO
@@ -7,7 +8,7 @@ namespace Abstract.DTO
     {
         public string Id { get; set; }
         public string Username { get; set; }
-        public IList<Event> EventList { get; set; }
-
+        public List<Event> EventCreated { get; set; }
+        public List<Event> EventJoined { get; set; }
     }
 }
