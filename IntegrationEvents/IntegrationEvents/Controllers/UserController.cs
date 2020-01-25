@@ -39,6 +39,18 @@ namespace WebApp.Controllers
             return _userService.GetByUsername(username);
         }
 
+        [HttpGet("EventCreated/{username}")]
+        public IEnumerable<Event> GetEventCreated(string username)
+        {
+            return _userService.GetEventCreated(username);
+        }
+
+        [HttpGet("EventJoined/{username}")]
+        public IEnumerable<Event> GetEventJoined(string username)
+        {
+            return _userService.GetEventJoined(username);
+        }
+
         // POST: api/User
         [HttpPost]
         public void Post([FromBody] User user)

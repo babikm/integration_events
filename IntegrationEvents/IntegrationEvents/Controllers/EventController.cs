@@ -24,13 +24,16 @@ namespace WebApp.Controllers
             _userService = userService;
         }
 
-        [HttpPost("Join/{eventId}")]
-        public void Join(User user, string eventId)
+        [HttpPost("Join/{eventId}/{userId}")]
+        public void Join(string userId, string eventId)
         {
-            user = _userService.Get("5e29caf5e0ede23cf0ca1fff");
+            User user = new User();
+            user = _userService.Get(userId);
             var @event = _eventService.Get(eventId);
             @event.UserList.Add(user);
             Put(@event);
+            user.EventJoined.Add(eventId);
+            _userService.Update(user, user.Id);
 
         }
         // GET: api/Event
@@ -48,10 +51,14 @@ namespace WebApp.Controllers
         }
 
         // POST: api/Event
-        [HttpPost]
-        public void Post([FromBody] Event @event)
+        [HttpPost("{userId}")]
+        public void Post([FromBody] Event @event, string userId)
         {
+            @event.Id = ObjectId.GenerateNewId().ToString();
             _eventService.Add(@event);
+            var user = _userService.Get(userId);
+            user.EventCreated.Add(@event.Id);
+            _userService.Update(user, user.Id);
         }
 
         // PUT: api/Event/5

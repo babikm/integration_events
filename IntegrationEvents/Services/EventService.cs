@@ -25,7 +25,7 @@ namespace Services
                 Description = @event.Description,
                 Spot = @event.Spot,
                 Date = @event.Date,
-                UserList = @event.UserList
+                UserList = new List<User>()
             });
         }
 

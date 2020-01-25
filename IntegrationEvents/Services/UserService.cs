@@ -24,7 +24,9 @@ namespace Services
                 Password = user.Password,
                 Email = user.Email,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                EventCreated = new List<string>(),
+                EventJoined = new List<string>()
             });
         }
 
@@ -42,6 +44,30 @@ namespace Services
         {
             var user = _unitOfWork.UserRepository.GetByUsername(username);
             return user;
+        }
+
+        public IEnumerable<Event> GetEventCreated(string username)
+        {
+            var user = GetByUsername(username);
+            List<string> list = user.EventCreated;
+            List<Event> updated = new List<Event>();
+            foreach (var item in list)
+            {
+                updated.Add(_unitOfWork.EventRepository.Get(item));
+            }
+            return updated;
+        }
+
+        public IEnumerable<Event> GetEventJoined(string username)
+        {
+            var user = GetByUsername(username);
+            List<string> list = user.EventJoined;
+            List<Event> updated = new List<Event>();
+            foreach (var item in list)
+            {
+                updated.Add(_unitOfWork.EventRepository.Get(item));
+            }
+            return updated;
         }
 
         public IEnumerable<UserDto> GetUsers()

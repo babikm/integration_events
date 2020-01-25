@@ -8,7 +8,7 @@ namespace Abstract.DTO
     {
         public string Id { get; set; }
         public string Username { get; set; }
-        public List<Event> EventCreated { get; set; }
-        public List<Event> EventJoined { get; set; }
+        public List<string> EventCreated { get; set; }
+        public List<string> EventJoined { get; set; }
     }
 }
