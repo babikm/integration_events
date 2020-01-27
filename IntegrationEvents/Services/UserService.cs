@@ -5,6 +5,7 @@ using Dal.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Services
@@ -15,19 +16,80 @@ namespace Services
         { 
         }
 
-        public void Add(User user)
+        public void Add(User user, string password)
         {
+            if(password == null)
+                throw new Exception("Password is required!");
+
+            if (_unitOfWork.UserRepository.GetAll().Any(x => x.UserName == user.UserName))
+                throw new Exception("Username \"" + user.UserName + "\" is already taken");
+
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
             _unitOfWork.UserRepository.Create(new User
             {
                 Id = user.Id,
                 UserName = user.UserName,
-                Password = user.Password,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
                 Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 EventCreated = new List<string>(),
                 EventJoined = new List<string>()
             });
+        }
+
+        public User Authenticate(string username, string password)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                return null;
+            var user = _unitOfWork.UserRepository.GetByUsername(username);
+
+            if (user == null)
+                return null;
+
+            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+                return null;
+
+            return user;
+        }
+
+
+        private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+            if (password == null) throw new ArgumentNullException("password");
+            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
+
+            using (var hmac = new HMACSHA512())
+            {
+                passwordSalt = hmac.Key;
+                passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+            }
+        }
+
+        private static bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
+        {
+            if (password == null) 
+                throw new ArgumentNullException("password");
+            if (string.IsNullOrWhiteSpace(password)) 
+                throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
+            if (storedHash.Length != 64) 
+                throw new ArgumentException("Invalid length of password hash (64 bytes expected).", "passwordHash");
+            if (storedSalt.Length != 128) 
+                throw new ArgumentException("Invalid length of password salt (128 bytes expected).", "passwordHash");
+
+            using (var hmac = new HMACSHA512(storedSalt))
+            {
+                var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+                for (int i = 0; i < computedHash.Length; i++)
+                {
+                    if (computedHash[i] != storedHash[i]) return false;
+                }
+            }
+
+            return true;
         }
 
         public void Delete(string id)

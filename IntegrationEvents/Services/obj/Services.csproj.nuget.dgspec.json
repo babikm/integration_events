@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Services\\Services.csproj": {}
+    "D:\\Nowe\\integration_events\\IntegrationEvents\\Services\\Services.csproj": {}
   },
   "projects": {
-    "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
+    "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
+        "projectUniqueName": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
         "projectName": "Abstract",
-        "projectPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
+        "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
         "packagesPath": "C:\\Users\\Majkel\\.nuget\\packages\\",
-        "outputPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Abstract\\obj\\",
+        "outputPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
-                "projectPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
+              "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
+                "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
               }
             }
           }
@@ -63,14 +63,14 @@
         }
       }
     },
-    "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
+    "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
+        "projectUniqueName": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
         "projectName": "Dal",
-        "projectPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
+        "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
         "packagesPath": "C:\\Users\\Majkel\\.nuget\\packages\\",
-        "outputPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\obj\\",
+        "outputPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -100,6 +100,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[2.10.1, )"
@@ -128,14 +132,14 @@
         }
       }
     },
-    "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Services\\Services.csproj": {
+    "D:\\Nowe\\integration_events\\IntegrationEvents\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Services\\Services.csproj",
+        "projectUniqueName": "D:\\Nowe\\integration_events\\IntegrationEvents\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Services\\Services.csproj",
+        "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Services\\Services.csproj",
         "packagesPath": "C:\\Users\\Majkel\\.nuget\\packages\\",
-        "outputPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Services\\obj\\",
+        "outputPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -154,11 +158,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
-                "projectPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj"
+              "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
+                "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj"
               },
-              "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
-                "projectPath": "D:\\IntegrationEvents\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
+              "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
+                "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
               }
             }
           }

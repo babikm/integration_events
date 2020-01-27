@@ -30,7 +30,7 @@ namespace Services
         }
 
         public void Delete(string id)
-        {
+        {            
             _unitOfWork.EventRepository.Delete(id);
         }
 
@@ -49,20 +49,6 @@ namespace Services
                Description = x.Description,
                UserList = x.UserList
             }).ToList();
-        }
-
-        public bool Join(User user, string eventId)
-        {
-            //Event @event = new Event();
-            ////if user is logged in
-            //var isJoined = @event.UserList.Contains(user);
-            //if(!isJoined)
-            //{
-            //    @event.UserList.Add(user);
-            //    user.EventList.Add(@event);
-            //    return true;
-            //}
-            return false;
         }
 
         public void Update(Event @event, string id)

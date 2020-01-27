@@ -13,8 +13,10 @@ namespace Abstract
         User GetByUsername(string username);
         IEnumerable<Event> GetEventCreated(string username);
         IEnumerable<Event> GetEventJoined(string username);
-        void Add(User user);
+        void Add(User user, string password);
         void Delete(string id);
         void Update(User user, string id);
+        User Authenticate(string username, string password);
+
     }
 }

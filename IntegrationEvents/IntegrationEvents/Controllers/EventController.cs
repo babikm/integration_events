@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Abstract;
 using Abstract.DTO;
 using Dal.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 
 namespace WebApp.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class EventController : ControllerBase
@@ -25,16 +27,27 @@ namespace WebApp.Controllers
         }
 
         [HttpPost("Join/{eventId}/{userId}")]
-        public void Join(string userId, string eventId)
+        public IActionResult Join(string userId, string eventId)
         {
             User user = new User();
             user = _userService.Get(userId);
             var @event = _eventService.Get(eventId);
-            @event.UserList.Add(user);
-            Put(@event);
-            user.EventJoined.Add(eventId);
-            _userService.Update(user, user.Id);
 
+            bool isExist = false;
+            foreach (var item in user.EventJoined)
+            {
+                if (item == eventId)
+                    isExist = true;
+            }
+            if(!isExist)
+            {
+                @event.UserList.Add(user);
+                user.EventJoined.Add(eventId);
+                _userService.Update(user, user.Id);
+                _eventService.Update(@event, @event.Id);
+                return Ok("Dołączyłeś do wydarzenia!");
+            }
+            return BadRequest("Już wcześniej dołączyłeś do tego wydarzenia!");
         }
         // GET: api/Event
         [HttpGet]
