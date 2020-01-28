@@ -2,23 +2,28 @@
   <div class="register">
     <div class="registerPanel">
       <h2 class="form-title">Rejestracja</h2>
-      <form method="POST" class="form" id="register-form" @submit.prevent="signin">
+      <form
+        method="POST"
+        class="form"
+        id="register-form"
+        @submit.prevent="signin"
+      >
         <div class="form-group">
           <label for="name">
-            <font-awesome-icon class="user-icon icon" icon="user-tie"/>
+            <font-awesome-icon class="user-icon icon" icon="user-tie" />
           </label>
           <input
-            v-model="credential.name"
+            v-model="credential.firstName"
             type="text"
             class="form-input"
             id="name"
             placeholder="Imię"
             autofocus
-          >
+          />
         </div>
         <div class="form-group">
           <label for="lastName">
-            <font-awesome-icon class="lock-icon icon" icon="user"/>
+            <font-awesome-icon class="lock-icon icon" icon="user" />
           </label>
           <input
             v-model="credential.lastName"
@@ -26,23 +31,23 @@
             class="form-input"
             id="lastName"
             placeholder="Nazwisko"
-          >
+          />
         </div>
-         <div class="form-group">
+        <div class="form-group">
           <label for="username">
-            <font-awesome-icon class="lock-icon icon" icon="user"/>
+            <font-awesome-icon class="lock-icon icon" icon="user" />
           </label>
           <input
-            v-model="credential.userName"
+            v-model="credential.username"
             type="text"
             class="form-input"
             id="username"
             placeholder="Nazwa użytkownika"
-          >
+          />
         </div>
         <div class="form-group">
           <label for="password">
-            <font-awesome-icon class="lock-icon icon" icon="lock"/>
+            <font-awesome-icon class="lock-icon icon" icon="lock" />
           </label>
           <input
             v-model="credential.password"
@@ -50,18 +55,29 @@
             class="form-input"
             id="password"
             placeholder="Hasło"
-          >
+          />
         </div>
         <div class="form-group form-button">
           <span class="form__errors" v-if="errors.length && !isVaild">
             <span class="form__errors--info">Popraw następujące błędy::</span>
             <ul class="form__errors-list">
-              <li class="form__errors-item" v-for="error in errors" :key="error">{{error}}</li>
+              <li
+                class="form__errors-item"
+                v-for="error in errors"
+                :key="error"
+              >
+                {{ error }}
+              </li>
             </ul>
           </span>
-          <button class="btn btn-dark registerBtn">Rejestruj</button>
-          <span class="form-login">Masz już konto?
-            <router-link class="form-login--link" to="/login">Zaloguj się</router-link>
+          <button class="btn btn-dark registerBtn" @click.prevent="signup">
+            Rejestruj
+          </button>
+          <span class="form-login"
+            >Masz już konto?
+            <router-link class="form-login--link" to="/login"
+              >Zaloguj się</router-link
+            >
           </span>
         </div>
       </form>
@@ -70,14 +86,16 @@
 </template>
 
 <script>
+import { registerUrl } from "@/variables";
+
 export default {
   name: "register",
   data() {
     return {
       credential: {
-        name: "",
-        userName: "",
+        firstName: "",
         lastName: "",
+        username: "",
         password: ""
       },
       errors: [],
@@ -85,35 +103,45 @@ export default {
     };
   },
   methods: {
-    signin() {
-      this.isValid = this.checkForm();
-      if (this.isValid) {
-        this.$router.push("/login");
-      }
-    },
     checkForm() {
       this.errors = [];
       if (
-        this.credential.name &&
+        this.credential.firstName &&
+        this.credential.lastName &&
         this.credential.username &&
-        this.credential.email &&
         this.credential.password
       ) {
         return true;
       }
-      if (!this.credential.name) {
+      if (!this.credential.firstName) {
         this.errors.push("Imię jest wymagane!");
       }
       if (!this.credential.lastName) {
         this.errors.push("Nazwisko jest wymagane!");
       }
-      if (!this.credential.userName) {
+      if (!this.credential.username) {
         this.errors.push("Nazwa użytkownika jest wymagana!");
       }
       if (!this.credential.password) {
         this.errors.push("Hasło jest wymagane!");
       }
-    }
+    },
+    signup() {
+      this.isValid = this.checkForm();
+      if (this.isValid) {
+        this.$http
+          .post(registerUrl, this.credential)
+          .then(data => {
+            console.log(data);
+            setTimeout(() => {
+              this.$router.push("/login");
+            }, 1500);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    },
   }
 };
 </script>

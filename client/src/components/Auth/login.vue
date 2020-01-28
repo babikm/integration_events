@@ -35,7 +35,7 @@
               <li class="form__errors-item" v-for="error in errors" :key="error">{{error}}</li>
             </ul>
           </span>
-          <button class="btn btn-dark loginBtn">Zaloguj</button>
+          <button class="btn btn-dark loginBtn" @click.prevent="signin">Zaloguj</button>
           <span class="form-register">Nie masz jeszcze konta?
             <router-link class="form-register--link" to="/register">Zarejstruj się</router-link>
           </span>
@@ -59,10 +59,13 @@ export default {
     };
   },
   methods: {
+    login() {
+      this.$store.dispatch("login", this.credential);
+    },
     signin() {
       this.isValid = this.checkForm();
       if (this.isValid) {
-        this.$router.push("/");
+        this.login();
       }
     },
     checkForm() {

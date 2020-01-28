@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { loginUrl } from '@/variables';
 
+import router from '@/router';
+
 Vue.use(Vuex);
 
 const types = {
@@ -11,11 +13,7 @@ const types = {
 
 const state = {
   logged: localStorage.getItem('token'),
-  currentUser: {
-    name: "Janek",
-    role: "Admin",
-    email: "janek@janeko2.pl"
-  },
+  currentUser: {},
 }
 
 
@@ -27,9 +25,12 @@ const getters = {
 const actions = {
   login({ commit }, credential) {
     Vue.http.post(loginUrl, credential)
-      .then(response => response.json())
-      .then((result) => {
-        localStorage.setItem('token', result.accessToken);
+      .then(function(response) { 
+       return response.json()
+      })
+      .then(function(result){
+        state.currentUser = result;
+        localStorage.setItem('token', result.tokenString);
         commit(types.LOGIN);
         router.push({ path: '/' });
       })

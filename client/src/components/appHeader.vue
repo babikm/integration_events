@@ -1,5 +1,5 @@
 <template>
-  <header v-if="isLogged" class="header">
+  <header v-if="checkIsLogged" class="header">
     <nav class="navigation">
       <span class="navigation__logo">
         <span class="navigation__link">Topowe wydarzenia 😎</span>
@@ -19,7 +19,7 @@
           <router-link class="navigation__link" to="/">Wydarzenia</router-link>
         </li>
         <li class="navigation__item">
-          <router-link class="navigation__link" to="/add-event">Dodaj wydarzenie</router-link>
+          <router-link class="navigation__link" to="/addEvent">Dodaj wydarzenie</router-link>
         </li>
         <li class="current-user">
           <font-awesome-icon class="icon user" icon="user"/>
@@ -28,19 +28,19 @@
               <strong>
                 <font-awesome-icon class="icon user-icon" icon="id-card"/>
               </strong>
-              {{getCurrentUser.name}}
+              {{getCurrentUser.userName}}
             </li>
             <li class="current-user__about-item">
               <strong>
                 <font-awesome-icon class="icon user-icon" icon="user-shield"/>
               </strong>
-              {{getCurrentUser.role}}
+              {{getCurrentUser.firstName}}
             </li>
             <li class="current-user__about-item">
               <strong>
                 <font-awesome-icon class="icon user-icon" icon="envelope"/>
               </strong>
-              {{getCurrentUser.email}}
+              {{getCurrentUser.lastName}}
             </li>
           </ul>
         </li>
@@ -57,20 +57,18 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: "appHeader",
-  computed: mapGetters([
-    'isLogged',
-  ]),
-  methods: {
-    logout() {
-      this.$store.dispatch('logout');
-    },
-  },
+  // computed: mapGetters([
+  //   'isLogged',
+  // ]),
   data() {
     return {
     };
   },
 
   computed: {
+    checkIsLogged() {
+      return this.$store.getters.isLogged;
+    },
     menuSelector() {
       return document.querySelector(".navigation__list");
     },
@@ -84,6 +82,9 @@ export default {
     },
     hideMenu() {
       this.menuSelector.classList.remove("navigation__list--visible");
+    },
+    logout() {
+      this.$store.dispatch('logout');
     },
   },
 };

@@ -52,11 +52,11 @@ Vue.http.interceptors.push((request, next) => {
     request.headers.set('Authorization', 'Bearer ' + localStorage.getItem('token'));
   }
 
-  next((response) => {
-    if (response.status === 400 || response.status === 401 || response.status === 403) {
-      router.push({ path: '/login' });
-    }
-  });
+  // next((response) => {
+  //   if (response.status === 400 || response.status === 401 || response.status === 403) {
+  //     router.push({ path: '/login' });
+  //   }
+  // });
 });
 
 new Vue({

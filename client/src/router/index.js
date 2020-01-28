@@ -19,7 +19,7 @@ const router = new VueRouter({
       meta: { requiresAuth: true }
     },
     {
-      path: "/add-event",
+      path: "/addEvent",
       component: addEvent,
       meta: { requiresAuth: true }
     },
@@ -48,8 +48,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.getters.getCurrentUser.name !== "Janek") {
-      next("/");
+    if (!localStorage.getItem('token')) {
+      next("/login");
     } else next();
   } else {
     next();
