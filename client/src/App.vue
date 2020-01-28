@@ -43,7 +43,7 @@ body {
   padding: 0 1rem;
   width: 100%;
   max-width: 1400px;
-  margin: 8.5rem auto 3rem;
+  margin: 6rem auto 3rem;
 }
 
 .router-anim-enter-active {

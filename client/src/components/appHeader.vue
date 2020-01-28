@@ -26,19 +26,19 @@
           <ul class="current-user__about-list">
             <li class="current-user__about-item">
               <strong>
-                <font-awesome-icon class="icon user-icon" icon="id-card"/>
+                <font-awesome-icon class="icon user-icon" icon="user-shield"/>
               </strong>
               {{getCurrentUser.userName}}
             </li>
             <li class="current-user__about-item">
               <strong>
-                <font-awesome-icon class="icon user-icon" icon="user-shield"/>
+                <font-awesome-icon class="icon user-icon" icon="signature"/>
               </strong>
               {{getCurrentUser.firstName}}
             </li>
             <li class="current-user__about-item">
               <strong>
-                <font-awesome-icon class="icon user-icon" icon="envelope"/>
+                <font-awesome-icon class="icon user-icon" icon="signature"/>
               </strong>
               {{getCurrentUser.lastName}}
             </li>

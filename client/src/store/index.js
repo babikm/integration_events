@@ -13,7 +13,7 @@ const types = {
 
 const state = {
   logged: localStorage.getItem('token'),
-  currentUser: {},
+  currentUser: JSON.parse(localStorage.getItem('user')),
 }
 
 
@@ -29,7 +29,9 @@ const actions = {
        return response.json()
       })
       .then(function(result){
-        state.currentUser = result;
+        const person = result;
+        const jsonPerson = JSON.stringify(person);
+        localStorage.setItem('user', jsonPerson);
         localStorage.setItem('token', result.tokenString);
         commit(types.LOGIN);
         router.push({ path: '/' });
@@ -39,6 +41,7 @@ const actions = {
 
   logout({ commit }) {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     commit(types.LOGOUT);
     router.push({ path: '/login' });
   },

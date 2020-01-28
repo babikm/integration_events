@@ -16,7 +16,9 @@ import {
   faFileExport,
   faArrowLeft,
   faLock,
-  faUserTie
+  faUserTie,
+  faSearch,
+  faSignature
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import App from './App.vue'
@@ -42,7 +44,9 @@ library.add(
   faFileExport,
   faArrowLeft,
   faLock,
-  faUserTie
+  faUserTie,
+  faSearch,
+  faSignature
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
@@ -58,6 +62,7 @@ Vue.http.interceptors.push((request, next) => {
   //   }
   // });
 });
+
 
 new Vue({
   router,

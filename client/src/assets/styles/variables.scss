@@ -1,0 +1,30 @@
+// colors
+$dark-red: rgba(255, 0, 0, 0.582);
+$dark-blue: rgba(27, 27, 206, 0.767);
+$dark-green: rgba(67, 148, 67, 0.829);
+$navy-blue: #324960f5;
+$white: #ffffff;
+
+// effects
+$default-shadow: 0px 6px 12px rgba(24, 41, 67, 0.2);
+
+// mixins
+@mixin default-button($color) {
+    border: 1px solid $color;
+    background: $color;
+    box-shadow: $default-shadow;
+    padding: 0.7rem 1.3rem;
+    color: $white;
+    cursor: pointer;
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+
+    &:hover {
+        color: $color;
+        background-color: $white;
+    }
+
+    &:active {
+        background-color: darken( $color, 10% );
+        transition: none;
+    }
+}
