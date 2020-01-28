@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Nowe\\integration_events\\IntegrationEvents\\Resolver\\Resolver.csproj": {}
+    "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Resolver\\Resolver.csproj": {}
   },
   "projects": {
-    "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
+    "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
+        "projectUniqueName": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
         "projectName": "Abstract",
-        "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
-        "packagesPath": "C:\\Users\\Majkel\\.nuget\\packages\\",
-        "outputPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\obj\\",
+        "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
+        "packagesPath": "C:\\Users\\sasin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Majkel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sasin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
-                "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
+              "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
+                "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
               }
             }
           }
@@ -63,20 +63,20 @@
         }
       }
     },
-    "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
+    "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
+        "projectUniqueName": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
         "projectName": "Dal",
-        "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
-        "packagesPath": "C:\\Users\\Majkel\\.nuget\\packages\\",
-        "outputPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\obj\\",
+        "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
+        "packagesPath": "C:\\Users\\sasin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Majkel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sasin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -132,20 +132,20 @@
         }
       }
     },
-    "D:\\Nowe\\integration_events\\IntegrationEvents\\Resolver\\Resolver.csproj": {
+    "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Resolver\\Resolver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Nowe\\integration_events\\IntegrationEvents\\Resolver\\Resolver.csproj",
+        "projectUniqueName": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Resolver\\Resolver.csproj",
         "projectName": "Resolver",
-        "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Resolver\\Resolver.csproj",
-        "packagesPath": "C:\\Users\\Majkel\\.nuget\\packages\\",
-        "outputPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Resolver\\obj\\",
+        "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Resolver\\Resolver.csproj",
+        "packagesPath": "C:\\Users\\sasin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Resolver\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Majkel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sasin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -158,14 +158,14 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
-                "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj"
+              "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
+                "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj"
               },
-              "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
-                "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
+              "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
+                "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
               },
-              "D:\\Nowe\\integration_events\\IntegrationEvents\\Services\\Services.csproj": {
-                "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Services\\Services.csproj"
+              "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Services\\Services.csproj"
               }
             }
           }
@@ -203,20 +203,20 @@
         }
       }
     },
-    "D:\\Nowe\\integration_events\\IntegrationEvents\\Services\\Services.csproj": {
+    "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Nowe\\integration_events\\IntegrationEvents\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\Majkel\\.nuget\\packages\\",
-        "outputPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Services\\obj\\",
+        "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\sasin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Majkel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sasin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -229,11 +229,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
-                "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj"
+              "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
+                "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj"
               },
-              "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
-                "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
+              "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
+                "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
               }
             }
           }
