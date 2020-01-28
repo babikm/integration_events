@@ -59,7 +59,7 @@
         </div>
         <div class="form-group form-button">
           <span class="form__errors" v-if="errors.length && !isVaild">
-            <span class="form__errors--info">Popraw następujące błędy::</span>
+            <span class="form__errors--info">Popraw następujące błędy:</span>
             <ul class="form__errors-list">
               <li
                 class="form__errors-item"

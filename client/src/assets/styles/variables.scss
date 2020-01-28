@@ -22,9 +22,4 @@ $default-shadow: 0px 6px 12px rgba(24, 41, 67, 0.2);
         color: $color;
         background-color: $white;
     }
-
-    &:active {
-        background-color: darken( $color, 10% );
-        transition: none;
-    }
 }
