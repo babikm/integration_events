@@ -1,5 +1,5 @@
 <template>
-  <header v-if="checkIsUserJanek" class="header">
+  <header v-if="isLogged" class="header">
     <nav class="navigation">
       <span class="navigation__logo">
         <span class="navigation__link">Topowe wydarzenia 😎</span>
@@ -44,7 +44,7 @@
             </li>
           </ul>
         </li>
-        <button class="navigation__logout" @click="toLogin">Wyloguj
+        <button class="navigation__logout" @click="logout">Wyloguj
           <font-awesome-icon class="icon" icon="door-open"/>
         </button>
       </ul>
@@ -53,8 +53,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-  name: "Header",
+  name: "appHeader",
+  computed: mapGetters([
+    'isLogged',
+  ]),
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
+    },
+  },
   data() {
     return {
     };
@@ -67,11 +77,6 @@ export default {
     getCurrentUser() {
       return this.$store.getters.getCurrentUser;
     },
-    checkIsUserJanek() {
-      const user = this.$store.getters.getCurrentUser.name;
-
-      return user === "Janek" ? true : false;
-    }
   },
   methods: {
     showMenu() {
@@ -80,10 +85,7 @@ export default {
     hideMenu() {
       this.menuSelector.classList.remove("navigation__list--visible");
     },
-    toLogin() {
-      this.$router.push("/login");
-    }
-  }
+  },
 };
 </script>
 

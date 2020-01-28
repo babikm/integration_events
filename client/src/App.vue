@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="myApp">
-    <Header></Header>
+    <app-header></app-header>
     <div class="main-wrapper">
       <transition name="router-anim">
         <router-view></router-view>
@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import Header from "@/components/Header";
+import appHeader from "@/components/appHeader";
 
 export default {
   name: "App",
   components: {
-    Header,
+    'app-header': appHeader,
   },
 }
 </script>
@@ -43,7 +43,7 @@ body {
   padding: 0 1rem;
   width: 100%;
   max-width: 1400px;
-  margin: 11rem auto 3rem;
+  margin: 8.5rem auto 3rem;
 }
 
 .router-anim-enter-active {
