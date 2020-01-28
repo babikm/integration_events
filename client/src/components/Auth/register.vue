@@ -35,7 +35,7 @@
         </div>
         <div class="form-group">
           <label for="username">
-            <font-awesome-icon class="lock-icon icon" icon="user" />
+            <font-awesome-icon class="lock-icon icon" icon="user-shield" />
           </label>
           <input
             v-model="credential.username"
