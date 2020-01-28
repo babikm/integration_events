@@ -18,7 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace WebApp.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -84,7 +84,7 @@ namespace WebApp.Controllers
 
         // GET: api/User
         [HttpGet]
-        public IEnumerable<UserDto> Get()
+        public IEnumerable<User> Get()
         {
             return _userService.GetUsers();
         }

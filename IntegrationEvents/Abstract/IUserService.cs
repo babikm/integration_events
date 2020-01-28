@@ -8,7 +8,7 @@ namespace Abstract
 {
     public interface IUserService
     {
-        IEnumerable<UserDto> GetUsers();
+        IEnumerable<User> GetUsers();
         User Get(string id);
         User GetByUsername(string username);
         IEnumerable<Event> GetEventCreated(string username);

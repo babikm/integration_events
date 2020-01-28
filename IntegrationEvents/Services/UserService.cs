@@ -132,13 +132,19 @@ namespace Services
             return updated;
         }
 
-        public IEnumerable<UserDto> GetUsers()
+        public IEnumerable<User> GetUsers()
         {
-            return _unitOfWork.UserRepository.GetAll().Select(x => new UserDto
+            return _unitOfWork.UserRepository.GetAll().Select(x => new User
             {
                 Id = x.Id,
-                Username = x.UserName,
-                EventCreated = x.EventCreated
+                UserName = x.UserName,
+                PasswordHash = x.PasswordHash,
+                PasswordSalt = x.PasswordSalt,
+                Email = x.Email,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                EventCreated = x.EventCreated,
+                EventJoined = x.EventJoined
             }).ToList();
         }
 
