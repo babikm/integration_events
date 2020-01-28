@@ -6,14 +6,14 @@
         <p class="single-blog__paragraph">{{event.description}}</p>
         <p class="single-blog__paragraph"><strong class="single-blog__strong">Uczestnicy: </strong>
           <ul class="single-blog__categories-list">
-              <li class="single-blog__categories-item" v-for="user in event.userList" :key="user">
+              <li class="single-blog__categories-item" v-for="user in event.userList" :key="user.userName">
                   {{user.userName}} - {{user.firstName}} {{user.lastName}} 
               </li>
           </ul>
         </p>
     </div>
     <div class="buttons-wrapper">
-      <button title="Dołącz" class="my-button join">Dołącz
+      <button title="Dołącz" class="my-button join" @click="joinTheEvent">Dołącz
         <font-awesome-icon class="icon" icon="check"/>
       </button>
       <button title="Edytuj" class="my-button edit">Edytuj
@@ -34,10 +34,21 @@ export default {
   data() {
     return {
         id: this.$route.params.id,
+        userId: this.$store.getters.getCurrentUser.id,
         event: {}
       }
     },
     methods: {
+        joinTheEvent() {
+          this.$http.post(`${eventUrl}/Join/${this.id}/${this.userId}`)
+          .then(response => {
+            alert(response.body)
+            this.$router.push( '/' );
+            })
+          .catch(err => {
+            alert(err.body);
+           })
+        },
         backToList() {
             this.$router.push( '/' );
         },

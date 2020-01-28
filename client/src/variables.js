@@ -7,7 +7,7 @@ const registerUrl = `${APIUrl}/user/register`;
 
 // Events
 
-const eventUrl = `${APIUrl}/Event`;
+const eventUrl = `${APIUrl}/event`;
 
 
 export { loginUrl, registerUrl, eventUrl};
