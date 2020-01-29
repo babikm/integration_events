@@ -2,7 +2,7 @@
   <header v-if="checkIsLogged" class="header">
     <nav class="navigation">
       <span class="navigation__logo">
-        <span class="navigation__link">Topowe wydarzenia 😎</span>
+        <span class="navigation__link">Wydarzenia integracyjne 😎</span>
       </span>
       <button @click="showMenu" class="burger-show">
         <span class="burger-show--box">

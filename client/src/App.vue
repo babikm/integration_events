@@ -2,9 +2,7 @@
   <div id="app" class="myApp">
     <app-header></app-header>
     <div class="main-wrapper">
-      <transition name="router-anim">
-        <router-view></router-view>
-      </transition>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -46,36 +44,4 @@ body {
   margin: 6rem auto 3rem;
 }
 
-.router-anim-enter-active {
-  animation: coming 0.5s;
-  animation-delay: 0.5s;
-  opacity: 0;
-}
-
-.router-anim-leave-active {
-  animation: going 0.3s;
-}
-
-@keyframes going {
-  from {
-    transform: translateX(0px);
-  }
-
-  to {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-}
-
-@keyframes coming {
-  from {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0px);
-    opacity: 1;
-  }
-}
 </style>

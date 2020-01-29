@@ -13,13 +13,13 @@
         </p>
     </div>
     <div class="buttons-wrapper">
-      <button title="Dołącz" class="my-button join" @click="joinTheEvent">Dołącz
+      <button title="Dołącz" v-if="canHeJoin" class="my-button join" @click="joinTheEvent">Dołącz
         <font-awesome-icon class="icon" icon="check"/>
       </button>
-      <button title="Edytuj" class="my-button edit">Edytuj
+      <button title="Edytuj" v-if="canHeDoAnyAction" class="my-button edit" @click="edit">Edytuj
         <font-awesome-icon class="icon" icon="eraser"/>
       </button>
-      <button title="Usuń" class="my-button delete">Usuń
+      <button title="Usuń" v-if="canHeDoAnyAction" class="my-button delete" @click="deleteEvent">Usuń
         <font-awesome-icon class="icon" icon="trash-alt"/>
       </button>
     </div>
@@ -27,41 +27,88 @@
 </template>
 
 <script>
-import { eventUrl } from "@/variables";
+import { eventUrl, getUserDataUrl } from "@/variables";
 
 export default {
    name: "singleEvent",
   data() {
     return {
-        id: this.$route.params.id,
+        eventId: this.$route.params.id,
         userId: this.$store.getters.getCurrentUser.id,
-        event: {}
+        userName: this.$store.getters.getCurrentUser.userName,
+        event: {},
+        user: {},
+        canHeJoin: true,
+        canHeDoAnyAction: false,
       }
     },
     methods: {
+        edit() {
+          this.$router.replace(`/event/${this.event.id}/edit`);
+        },
+        deleteEvent() {
+          if(confirm('Czy na pewno chcesz usunąć wydarzenie?'))
+            this.$http.delete(`${eventUrl}/${this.eventId}`)
+            .then(response => {
+              alert('Wydarzenie zostało usunięte')
+              this.$router.push( '/' );
+              })
+            .catch(err => {
+              alert(err.body);
+            })
+        },
         joinTheEvent() {
-          this.$http.post(`${eventUrl}/Join/${this.id}/${this.userId}`)
+          this.$http.post(`${eventUrl}/Join/${this.eventId}/${this.userId}`)
           .then(response => {
             alert(response.body)
             this.$router.push( '/' );
             })
           .catch(err => {
             alert(err.body);
+            console.log(err.status);
            })
         },
         backToList() {
             this.$router.push( '/' );
         },
+        getEvent() {
+           this.$http.get(`${eventUrl}/${this.eventId}`)
+          .then(response => response.json())
+          .then(object => {
+              this.event = object;
+          })
+          .catch(err => {
+            console.log(err)
+            })
+        },
+        getUserData() {
+          this.$http.get(`${getUserDataUrl}/${this.userName}`)
+          .then(response => response.json())
+          .then(object => {
+              this.user = object;
+          })
+          .then(() => {
+            for(let idJ of this.user.eventJoined) {
+                if(idJ === this.eventId) {
+                  this.canHeJoin = false;
+                  break;
+                }
+            }
+            for(let idC of this.user.eventCreated) {
+                if(idC === this.eventId) {
+                  this.canHeDoAnyAction = true;
+                  break;
+                }
+            }
+          })
+          .catch(err => {
+            console.log(err)
+            })
+        },
     },
     created() {
-        this.$http.get(`${eventUrl}/${this.id}`)
-        .then(response => response.json())
-        .then(object => {
-             this.event = object;
-        })
-        .catch(err => {
-          console.log(err)
-          })
+      this.getEvent();
+      this.getUserData();
     }
 };
 </script>
@@ -121,8 +168,11 @@ export default {
     animation: moveYe .8s;
 }
 
-.my-button + .my-button {
+.my-button {
   margin-top: 0.5rem;
+}
+
+.my-button + .my-button {
   margin-left: 0.5rem;
 }
 

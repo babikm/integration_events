@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import events from "@/components/Event/events.vue";
 import addEvent from "@/components/Event/addEvent.vue";
+import editEvent from "@/components/Event/editEvent.vue";
 import singleEvent from "@/components/Event/singleEvent.vue";
 import login from "@/components/Auth/login.vue";
 import register from "@/components/Auth/register.vue";
@@ -26,6 +27,11 @@ const router = new VueRouter({
     {
       path: '/event/:id',
       component: singleEvent,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/event/:id/edit',
+      component: editEvent,
       meta: { requiresAuth: true }
     },
     {

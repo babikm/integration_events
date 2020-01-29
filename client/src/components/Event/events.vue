@@ -8,7 +8,7 @@
         id="search"
         name="search"
         v-model="search"
-        placeholder="szukaj wydarzenia..."
+        placeholder="szukaj..."
       />
       <label for="search"
         ><font-awesome-icon class="search-icon icon" icon="search"

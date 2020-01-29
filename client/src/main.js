@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueResource from "vue-resource";
+import moment from 'moment';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faTrashAlt,
@@ -26,6 +27,7 @@ import router from './router'
 import store from './store'
 
 Vue.config.productionTip = false
+Vue.use(require("moment"));
 
 Vue.use(VueResource);
 

@@ -1,7 +1,8 @@
 <template>
   <div id="addBlog" class="main-container--add">
-     <h1 class="main-container--add__title">Dodaj nowe wydarzenie</h1>
-
+     <h1 class="main-container--add__title">Modyfikuj wydarzenie: {{event.Name}}</h1>
+     
+     <button class="single-blog__button" @click="back"><font-awesome-icon class="plus-icon icon" icon="arrow-left" />Powrót</button>
     <form v-if="!submitted" class="form">
       <p class="form__wrapper">
         <label class="form__label" for="cratedDate">Nazwa:</label>
@@ -12,12 +13,12 @@
         <textarea class="form__input form__input--text-area" name="title" id="title" required v-model.lazy="event.Description" />
       </p>
       <p>
-        <label class="form__label" for="content">Data:</label>
-        <input class="form__input" type="datetime-local" name="content" id="content" required v-model.lazy="event.Date">
+        <label class="form__label" for="date">Data:</label>
+        <input class="form__input" type="datetime-local" name="date" id="date" required v-model.lazy="event.Date">
       </p>
       <p>
-        <label class="form__label" for="content">Miejsce:</label>
-        <input class="form__input" type="text" name="content" id="content" required v-model.lazy="event.Spot">
+        <label class="form__label" for="spot">Miejsce:</label>
+        <input class="form__input" type="text" name="spot" id="spot" required v-model.lazy="event.Spot">
       </p>
       <p class="form__errors" v-if="errors.length">
         <span>Popraw następujące błędy:</span>
@@ -27,44 +28,22 @@
           </li>
         </ul>
       </p>
-      <button class="form__send-button" @click.prevent="post"><font-awesome-icon class="plus-icon icon" icon="plus" />Dodaj wydarzenie</button>
+      <button class="form__send-button join" @click.prevent="put"><font-awesome-icon class="plus-icon icon" icon="check" />Zatwierdź</button>
     </form>
 
     <div class="after-post" v-if="submitted">
-      <h2 class="after-post__title">Wydarzenie zostało dodane!</h2>
-    </div>
-
-    <div class="preview">
-      <h3 class="preview__header">Podgląd</h3>
-      <p class="preview__date">
-        Nazwa:
-        <span class="preview__value">{{event.Name}}</span>
-      </p>
-      <p class="preview__title">
-        Opis:
-        <span class="preview__value">{{event.Description}}</span>
-      </p>
-      <p class="preview__content">
-        Data:
-        <span class="preview__value">{{event.Date}}</span>
-      </p>
-      <p class="preview__author">
-        Miejsce:
-        <span class="preview__value">{{event.Spot}}</span>
-      </p>
+      <h2 class="after-post__title">Wydarzenie zostało zmodyfikowane!</h2>
     </div>
   </div>
 </template>
 
 <script>
 import { eventUrl } from "@/variables";
-
-
-const today = new Date().toISOString().slice(0,10);
+import * as moment from "moment/moment";
 
 
 export default {
-  name: "addEvent",
+  name: "editEvent",
   data() {
     return {
       event: {
@@ -73,7 +52,7 @@ export default {
         Date: "",
         Spot: "",
       },
-      currentUser: this.$store.getters.getCurrentUser.id,
+      eventId: this.$route.params.id,
       submitted: false,
       errors: [],
       visible: false,
@@ -81,6 +60,9 @@ export default {
     };
   },
   methods: {
+    back(){
+        this.$router.replace(`/event/${this.eventId}`);
+    },
     show() {
       this.visible = true;
     },
@@ -106,10 +88,10 @@ export default {
         this.errors.push('Miejsce jest wymagane!');
       }
     },
-    post() {
+    put() {
       const isValid = this.checkForm();
       if(isValid) {
-        this.$http.post(`${eventUrl}/${this.currentUser}`, this.event)
+        this.$http.put(`${eventUrl}/${this.eventId}`, this.event)
         .then(data => {
           this.submitted = true;
           setTimeout(() => {
@@ -120,19 +102,42 @@ export default {
           console.log(err)
           })
       }
-    }
+    },
+    getEvent() {
+           this.$http.get(`${eventUrl}/${this.eventId}`)
+          .then(response => response.json())
+          .then(object => {
+              const {name, description, date, spot} = object;
+              this.event.Name = name;
+              this.event.Description = description;
+              this.event.Date = moment(date).format("YYYY-MM-DDThh:mm");
+              this.event.Spot = spot;
+          })
+          .catch(err => {
+            console.log(err)
+            })
+        }
+  },
+  created() {
+      this.getEvent();
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@keyframes rotateYe {
+@import "@/assets/styles/variables.scss";
+
+@keyframes moveYe {
     0% {
-        transform: rotate(0);
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(-3px);
     }
     100% {
-        transform: rotate(180deg);
+        transform: translateX(0px);
     }
+    
 }
 .fade-enter-active,
 .fade-leave-active {
@@ -142,15 +147,34 @@ export default {
   opacity: 0;
   transform: translateY(-10px);
 }
+
+.single-blog__button {
+      margin: 1rem 18rem 2.5rem 0;
+      background: #2c3e50;
+      border: 1px solid #2c3e50;
+      cursor: pointer;
+      color: #ffffff;
+      font-weight: bold;
+      padding: 0.7rem 1.3rem;
+      transition: background .4s ease-in-out, color .4s ease-in-out;
+      &:hover {
+        background: #ffffff;
+        color: #2c3e50;
+      }
+      &:hover > svg {
+          animation: moveYe .8s infinite;
+      }
+    }
+
 .main-container--add {
   width: 100%;
   max-width: 950px;
   padding: 1rem;
   margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   &__title {
     margin: 3rem 0 4rem 0;
     flex-basis: 100%;
@@ -182,28 +206,17 @@ export default {
       min-height: 80px;
     }
   }
-  &__send-button {
-    margin: 1rem 0;
-    background: #2c3e50;
-    border: 1px solid #2c3e50;
-    cursor: pointer;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 0.7rem 1.3rem;
-    transition: background .4s ease-in-out, color .4s ease-in-out;
-    &:hover {
-      background: #ffffff;
-      color: #2c3e50;
-    }
-    &:hover > svg {
-      animation: rotateYe 1s infinite;
-    }
-  }
+
   &__errors {
     margin-top: 2rem;
     color: #dc6868;
   }
 }
+
+.join {
+ @include default-button($dark-green);
+}
+
 svg {
     margin-right: 0.5rem;
     animation: rotateYe 1s;
