@@ -35,6 +35,7 @@ const actions = {
         localStorage.setItem('token', result.tokenString);
         commit(types.LOGIN);
         router.push({ path: '/' });
+        router.go(0);
       })
       .catch(err => console.log(err));
   },

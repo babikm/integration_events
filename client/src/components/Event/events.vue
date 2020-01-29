@@ -70,7 +70,6 @@ export default {
         .then(data => {
           this.loading = false;
           this.events = data;
-          console.log(data);
         })
         .catch(err => {
           console.log(err);

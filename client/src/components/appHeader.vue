@@ -28,19 +28,19 @@
               <strong>
                 <font-awesome-icon class="icon user-icon" icon="user-shield"/>
               </strong>
-              {{getCurrentUser.userName}}
+              {{user.userName}}
             </li>
             <li class="current-user__about-item">
               <strong>
                 <font-awesome-icon class="icon user-icon" icon="signature"/>
               </strong>
-              {{getCurrentUser.firstName}}
+              {{user.firstName}}
             </li>
             <li class="current-user__about-item">
               <strong>
                 <font-awesome-icon class="icon user-icon" icon="signature"/>
               </strong>
-              {{getCurrentUser.lastName}}
+              {{user.lastName}}
             </li>
           </ul>
         </li>
@@ -57,11 +57,10 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: "appHeader",
-  // computed: mapGetters([
-  //   'isLogged',
-  // ]),
+
   data() {
     return {
+      user: {},
     };
   },
 
@@ -72,9 +71,9 @@ export default {
     menuSelector() {
       return document.querySelector(".navigation__list");
     },
-    getCurrentUser() {
-      return this.$store.getters.getCurrentUser;
-    },
+  },
+  created() {
+    this.user = this.$store.getters.getCurrentUser;
   },
   methods: {
     showMenu() {

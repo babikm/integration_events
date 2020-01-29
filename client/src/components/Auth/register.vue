@@ -132,10 +132,9 @@ export default {
         this.$http
           .post(registerUrl, this.credential)
           .then(data => {
-            console.log(data);
             setTimeout(() => {
               this.$router.push("/login");
-            }, 1500);
+            }, 1000);
           })
           .catch(err => {
             console.log(err);

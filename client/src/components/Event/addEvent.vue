@@ -111,11 +111,10 @@ export default {
       if(isValid) {
         this.$http.post(`${eventUrl}/${this.currentUser}`, this.event)
         .then(data => {
-          console.log(data);
           this.submitted = true;
           setTimeout(() => {
             this.$router.push('/');
-          }, 1500);
+          }, 1000);
         })
         .catch(err => {
           console.log(err)
