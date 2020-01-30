@@ -138,18 +138,8 @@ export default {
       box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.2);
     }
     &__button {
-      margin: 1rem 0 3rem;
-      background: #2c3e50;
-      border: 1px solid #2c3e50;
-      cursor: pointer;
-      color: #ffffff;
-      font-weight: bold;
-      padding: 0.7rem 1.3rem;
-      transition: background .4s ease-in-out, color .4s ease-in-out;
-      &:hover {
-        background: #ffffff;
-        color: #2c3e50;
-      }
+      @include default-button($navy-blue);
+      margin: 2rem 0 1.5rem 0;
       &:hover > svg {
           animation: moveYe .8s infinite;
       }

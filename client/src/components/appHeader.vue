@@ -323,6 +323,7 @@ export default {
 
 .navigation__logout {
   background: none;
+  border-radius: 0px 8px;
   cursor: pointer;
   border: 2px solid #324960;
   font-weight: bold;

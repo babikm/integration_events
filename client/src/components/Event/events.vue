@@ -103,6 +103,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/assets/styles/variables.scss";
+
 @keyframes lds-ring {
   0% {
     transform: rotate(0deg);
@@ -127,16 +129,8 @@ export default {
   padding: 3rem 0 4rem 0;
 }
 .blog__single-link {
-  padding: 0.7rem 1.3rem;
-  background: #2c3e50;
-  border: 1px solid #2c3e50;
-  color: #fff;
   text-decoration: none;
-  transition: background 0.4s ease-in-out, color 0.4s ease-in-out;
-  &:hover {
-    background: #ffffff;
-    color: #2c3e50;
-  }
+  @include default-button($navy-blue);
 }
 .blog__wrapper {
   padding-bottom: 1rem;
@@ -158,6 +152,7 @@ export default {
 }
 .blog__item {
   box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.2);
+  border-radius: 0.3rem;
   padding: 1rem 0.8rem;
   margin-bottom: 2rem;
   transition: transform 0.4s ease-in-out, background 0.4s ease-in-out,

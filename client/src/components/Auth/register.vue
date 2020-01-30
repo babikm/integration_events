@@ -157,6 +157,7 @@ export default {
 .registerPanel {
   display: flex;
   flex-direction: column;
+  border-radius: 0px 8px;
   justify-content: center;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.9);
@@ -241,6 +242,7 @@ label {
   margin-top: 3rem;
   padding: 0.7rem 2.5rem;
   border: none;
+  border-radius: 0px 8px;
   background-color: #4fc08d;
   color: #fff;
   cursor: pointer;

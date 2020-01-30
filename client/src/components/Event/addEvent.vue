@@ -126,6 +126,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/variables.scss";
+
 @keyframes rotateYe {
     0% {
         transform: rotate(0);
@@ -184,17 +186,7 @@ export default {
   }
   &__send-button {
     margin: 1rem 0;
-    background: #2c3e50;
-    border: 1px solid #2c3e50;
-    cursor: pointer;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 0.7rem 1.3rem;
-    transition: background .4s ease-in-out, color .4s ease-in-out;
-    &:hover {
-      background: #ffffff;
-      color: #2c3e50;
-    }
+   @include default-button($navy-blue);
     &:hover > svg {
       animation: rotateYe 1s infinite;
     }

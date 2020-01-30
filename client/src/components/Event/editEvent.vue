@@ -149,22 +149,12 @@ export default {
 }
 
 .single-blog__button {
-      margin: 1rem 18rem 2.5rem 0;
-      background: #2c3e50;
-      border: 1px solid #2c3e50;
-      cursor: pointer;
-      color: #ffffff;
-      font-weight: bold;
-      padding: 0.7rem 1.3rem;
-      transition: background .4s ease-in-out, color .4s ease-in-out;
-      &:hover {
-        background: #ffffff;
-        color: #2c3e50;
-      }
-      &:hover > svg {
+  @include default-button($navy-blue);
+  margin: 2rem 18rem 2rem 0;
+  &:hover > svg {
           animation: moveYe .8s infinite;
       }
-    }
+}
 
 .main-container--add {
   width: 100%;

@@ -97,6 +97,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 0.3rem;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.2);
@@ -182,6 +183,7 @@ label {
   margin-top: 3rem;
   padding: 0.7rem 2.5rem;
   border: none;
+  border-radius: 0px 8px;
   background-color: #4fc08d;
   color: #fff;
   cursor: pointer;
