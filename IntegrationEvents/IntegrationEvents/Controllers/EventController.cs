@@ -76,7 +76,7 @@ namespace WebApp.Controllers
 
         // PUT: api/Event/5
         [HttpPut("{id}")]
-        public void Put([FromBody] Event @event)
+        public void Put(Event @event)
         {
             _eventService.Update(@event, @event.Id);
         }

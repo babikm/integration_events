@@ -94,6 +94,22 @@ namespace Services
 
         public void Delete(string id)
         {
+            var user = _unitOfWork.UserRepository.Get(id);
+            if (user.EventCreated.Count != 0 || user.EventJoined.Count != 0)
+            {
+                foreach (var item in user.EventJoined)
+                {
+                    var @event = _unitOfWork.EventRepository.Get(item);
+                    @event.UserList.RemoveAll(x => x.Id == user.Id);
+                    _unitOfWork.EventRepository.Update(x => x.Id == @event.Id, @event);
+                }
+                foreach (var item in user.EventCreated)
+                {
+                    var @event = _unitOfWork.EventRepository.Get(item);
+                    @event.UserList.RemoveAll(x => x.Id == user.Id);
+                    _unitOfWork.EventRepository.Update(x => x.Id == @event.Id, @event);
+                }
+            }
             _unitOfWork.UserRepository.Delete(id);
         }
 

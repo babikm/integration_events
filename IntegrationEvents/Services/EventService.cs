@@ -30,7 +30,15 @@ namespace Services
         }
 
         public void Delete(string id)
-        {            
+        {
+            var @event = _unitOfWork.EventRepository.Get(id);
+            foreach (var item in @event.UserList)
+            {
+                var user = _unitOfWork.UserRepository.Get(item.Id);
+                user.EventJoined.RemoveAll(x => x == id);
+                user.EventCreated.RemoveAll(x => x == id);
+                _unitOfWork.UserRepository.Update(x => x.Id == user.Id, user);
+            }
             _unitOfWork.EventRepository.Delete(id);
         }
 

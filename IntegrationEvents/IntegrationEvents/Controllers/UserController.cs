@@ -123,7 +123,7 @@ namespace WebApp.Controllers
 
         // PUT: api/User/5
         [HttpPut("{id}")]
-        public void Put([FromBody] User user)
+        public void Put(User user)
         {
             _userService.Update(user, user.Id);
         }
