@@ -19,6 +19,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/assets/styles/variables.scss";
+
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -34,7 +36,7 @@ body {
 
 .myApp {
   text-align: center;
-  color: #2c3e50;
+  color: $navy-blue;
 }
 
 .main-wrapper {
