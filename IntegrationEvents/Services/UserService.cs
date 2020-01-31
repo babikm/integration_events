@@ -2,6 +2,7 @@
 using Abstract.DTO;
 using Dal;
 using Dal.Model;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,13 +102,19 @@ namespace Services
                 {
                     var @event = _unitOfWork.EventRepository.Get(item);
                     @event.UserList.RemoveAll(x => x.Id == user.Id);
-                    _unitOfWork.EventRepository.Update(x => x.Id == @event.Id, @event);
+                    var update = Builders<Event>
+                    .Update
+                        .Set(x => x.UserList, @event.UserList);
+                    _unitOfWork.EventRepository.Update(x => x.Id == @event.Id, update);
                 }
                 foreach (var item in user.EventCreated)
                 {
                     var @event = _unitOfWork.EventRepository.Get(item);
                     @event.UserList.RemoveAll(x => x.Id == user.Id);
-                    _unitOfWork.EventRepository.Update(x => x.Id == @event.Id, @event);
+                    var update = Builders<Event>
+                    .Update
+                        .Set(x => x.UserList, @event.UserList);
+                    _unitOfWork.EventRepository.Update(x => x.Id == @event.Id, update);
                 }
             }
             _unitOfWork.UserRepository.Delete(id);

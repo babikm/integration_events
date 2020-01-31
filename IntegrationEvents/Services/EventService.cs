@@ -2,6 +2,7 @@
 using Abstract.DTO;
 using Dal;
 using Dal.Model;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,12 @@ namespace Services
                 var user = _unitOfWork.UserRepository.Get(item.Id);
                 user.EventJoined.RemoveAll(x => x == id);
                 user.EventCreated.RemoveAll(x => x == id);
-                _unitOfWork.UserRepository.Update(x => x.Id == user.Id, user);
+                var update = Builders<User>
+                    .Update
+                        .Set(x => x.EventCreated, user.EventCreated)
+                        .Set(x => x.EventJoined, user.EventJoined);
+                    
+                _unitOfWork.UserRepository.Update(x => x.Id == user.Id, update);
             }
             _unitOfWork.EventRepository.Delete(id);
         }

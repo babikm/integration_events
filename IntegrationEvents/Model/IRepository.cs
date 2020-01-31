@@ -13,6 +13,7 @@ namespace Dal
         T Get(string id);
         IEnumerable<T> GetAll();
         void Create(T entity);
+        T Update(Expression<Func<T, bool>> filter, UpdateDefinition<T> update);
         T Update(Expression<Func<T, bool>> filter, T replacement);
         Task<T> Update(FilterDefinition<T> filter, T replacement);
         T GetByUsername(string username);

@@ -47,6 +47,10 @@ namespace Dal
             var all =  _collection.FindSync(_ => true).ToList();
             return all;
         }
+        public T Update(Expression<Func<T, bool>> filter, UpdateDefinition<T> update)
+        {
+            return _collection.FindOneAndUpdate(filter, update);
+        }
 
         public T Update(Expression<Func<T, bool>> filter, T replacement)
         {
