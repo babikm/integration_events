@@ -159,8 +159,8 @@ export default {
   padding: 0.8rem;
   color: $white;
   z-index: -1;
-  border-bottom-right-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
+  border-bottom-right-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
 }
 .event__list {
   list-style-type: none;
