@@ -1,23 +1,23 @@
 <template>
-  <div id="addBlog" class="main-container--add">
+  <div id="addEvent" class="main-container--add">
      <h1 class="main-container--add__title">Dodaj nowe wydarzenie</h1>
 
     <form v-if="!submitted" class="form">
       <p class="form__wrapper">
-        <label class="form__label" for="cratedDate">Nazwa:</label>
-        <input class="form__input date-input" type="text" name="createdDate" id="createdDate" required v-model.lazy="event.Name" />
+        <label class="form__label" for="name">Nazwa:</label>
+        <input class="form__input date-input" type="text" name="name" id="name" required v-model.lazy="event.Name" />
       </p>
       <p class="form__wrapper">
-        <label class="form__label" for="title">Opis:</label>
-        <textarea class="form__input form__input--text-area" name="title" id="title" required v-model.lazy="event.Description" />
+        <label class="form__label" for="desc">Opis:</label>
+        <textarea class="form__input form__input--text-area" name="desc" id="desc" required v-model.lazy="event.Description" />
       </p>
       <p>
-        <label class="form__label" for="content">Data:</label>
-        <input class="form__input" type="datetime-local" name="content" id="content" required v-model.lazy="event.Date">
+        <label class="form__label" for="date">Data:</label>
+        <input class="form__input" type="datetime-local" name="date" id="date" required v-model.lazy="event.Date">
       </p>
       <p>
-        <label class="form__label" for="content">Miejsce:</label>
-        <input class="form__input" type="text" name="content" id="content" required v-model.lazy="event.Spot">
+        <label class="form__label" for="spot">Miejsce:</label>
+        <input class="form__input" type="text" name="spot" id="spot" required v-model.lazy="event.Spot">
       </p>
       <p class="form__errors" v-if="errors.length">
         <span>Popraw następujące błędy:</span>
@@ -46,7 +46,7 @@
       </p>
       <p class="preview__content">
         Data:
-        <span class="preview__value">{{event.Date}}</span>
+        <span class="preview__value">{{event.Date | format-date}}</span>
       </p>
       <p class="preview__author">
         Miejsce:
@@ -58,10 +58,7 @@
 
 <script>
 import { eventUrl } from "@/variables";
-
-
-const today = new Date().toISOString().slice(0,10);
-
+import * as moment from "moment/moment";
 
 export default {
   name: "addEvent",
@@ -79,6 +76,12 @@ export default {
       visible: false,
       hideErrors: false,
     };
+  },
+  filters: {
+    formatDate(value) {
+      if(value)
+      return moment(String(value)).format('YYYY-MM-DD hh:mm')
+    }
   },
   methods: {
     show() {
@@ -136,14 +139,7 @@ export default {
         transform: rotate(180deg);
     }
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s, transform 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  transform: translateY(-10px);
-}
+
 .main-container--add {
   width: 100%;
   max-width: 950px;

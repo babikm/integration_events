@@ -25,6 +25,36 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "@/assets/styles/variables.scss";
+
+@keyframes moveYe {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+    
+}
+
+@keyframes color-transition {
+  0% {
+    color: #324960f5;
+  }
+  33% {
+    color: rgba(50, 122, 74, 0.616);
+  }
+  66% {
+    color: rgba(145, 43, 97, 0.596);
+  }
+  100% {
+    color: #324960f5;
+  }
+}
+
 .not-found {
   position: fixed;
   z-index: 9999;
@@ -76,21 +106,12 @@ export default {
 
   &__link {
     text-decoration: none;
-    margin-top: 3.5rem;
-    padding: 0.7rem 1.3rem;
-    cursor: pointer;
-    color: #324960f5;
-    border: 1px solid #324960f5;
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    margin-top: 2rem;
+   @include default-button($navy-blue);
 
-    &:hover {
-      color: #fff;
-      background-color: #324960f5;
-    }
-    &:active {
-      background-color: darken(#324960f5, 10%);
-      transition: none;
-    }
+   &:hover > svg {
+          animation: moveYe .8s infinite;
+      }
   }
 
   &__path {
@@ -105,18 +126,4 @@ export default {
   }
 }
 
-@keyframes color-transition {
-  0% {
-    color: #324960f5;
-  }
-  33% {
-    color: rgba(50, 122, 74, 0.616);
-  }
-  66% {
-    color: rgba(145, 43, 97, 0.596);
-  }
-  100% {
-    color: #324960f5;
-  }
-}
 </style>

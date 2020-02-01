@@ -195,10 +195,5 @@ label {
     background-color: #44ae7e;
   }
 }
-.red {
-  border-bottom: 1px solid red;
-}
-.green {
-  border-bottom: 1px solid lightgreen;
-}
+
 </style>

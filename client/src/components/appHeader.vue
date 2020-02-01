@@ -34,13 +34,7 @@
               <strong>
                 <font-awesome-icon class="icon user-icon" icon="signature"/>
               </strong>
-              {{user.firstName}}
-            </li>
-            <li class="current-user__about-item">
-              <strong>
-                <font-awesome-icon class="icon user-icon" icon="signature"/>
-              </strong>
-              {{user.lastName}}
+              {{user.firstName}} {{user.lastName}}
             </li>
           </ul>
         </li>

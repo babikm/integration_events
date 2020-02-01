@@ -1,16 +1,16 @@
 <template>
-  <div id="addBlog" class="main-container--add">
+  <div id="editEvent" class="main-container--edit">
      <h1 class="main-container--add__title">Modyfikuj wydarzenie: {{event.Name}}</h1>
      
-     <button class="single-blog__button" @click="back"><font-awesome-icon class="plus-icon icon" icon="arrow-left" />Powrót</button>
+     <button class="single-event__button" @click="back"><font-awesome-icon class="plus-icon icon" icon="arrow-left" />Powrót</button>
     <form v-if="!submitted" class="form">
       <p class="form__wrapper">
-        <label class="form__label" for="cratedDate">Nazwa:</label>
-        <input class="form__input date-input" type="text" name="createdDate" id="createdDate" required v-model.lazy="event.Name" />
+        <label class="form__label" for="name">Nazwa:</label>
+        <input class="form__input date-input" type="text" name="name" id="name" required v-model.lazy="event.Name" />
       </p>
       <p class="form__wrapper">
-        <label class="form__label" for="title">Opis:</label>
-        <textarea class="form__input form__input--text-area" name="title" id="title" required v-model.lazy="event.Description" />
+        <label class="form__label" for="desc">Opis:</label>
+        <textarea class="form__input form__input--text-area" name="desc" id="desc" required v-model.lazy="event.Description" />
       </p>
       <p>
         <label class="form__label" for="date">Data:</label>
@@ -139,16 +139,9 @@ export default {
     }
     
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s, transform 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  transform: translateY(-10px);
-}
 
-.single-blog__button {
+
+.single-event__button {
   @include default-button($navy-blue);
   margin: 2rem 18rem 2rem 0;
   &:hover > svg {
@@ -156,7 +149,7 @@ export default {
       }
 }
 
-.main-container--add {
+.main-container--edit {
   width: 100%;
   max-width: 950px;
   padding: 1rem;
