@@ -22,6 +22,7 @@
     </div>
     <ul class="event__list">
       <li v-for="event in filteredEvents" :key="event.id" class="event__item">
+        <span v-if="event.userList.length" class="event__counter">{{event.userList.length}}</span>
         <article class="event__wrapper">
           <h2 class="event__single-title">
             {{ event.name | to-uppercase }}
@@ -158,6 +159,8 @@ export default {
   padding: 0.8rem;
   color: $white;
   z-index: -1;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
 }
 .event__list {
   list-style-type: none;
@@ -166,7 +169,6 @@ export default {
   max-width: 800px;
 }
 .event__item {
-  overflow: hidden;
   position: relative;
   box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.2);
   border-radius: 0.3rem;
@@ -176,6 +178,22 @@ export default {
 }
 .event__item:hover {
   transform: translateY(-3px);
+}
+.event__counter {
+  position: absolute;
+  top: -11px;
+  left: -9px;
+  z-index: 5;
+  color: $white;
+  text-align: center;
+  padding: 0.1rem;
+  border-radius: 25px;
+  background: #ce3333;
+  overflow: hidden;
+  line-height: 1.5rem;
+  width: 28px;
+  height: 28px;
+  box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.42);
 }
 .theme-switch .wrapper {
   text-align: center;
