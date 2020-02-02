@@ -67,7 +67,15 @@ namespace Services
 
         public void Update(Event @event, string id)
         {
-            _unitOfWork.EventRepository.Update(x => x.Id == id, @event);
+            var update = Builders<Event>
+                .Update
+                .Set(x => x.Name, @event.Name)
+                .Set(x => x.Description, @event.Description)
+                .Set(x => x.Date, @event.Date)
+                .Set(x => x.Spot, @event.Spot);
+
+            _unitOfWork.EventRepository.Update(x => x.Id == id, @update);
+            //_unitOfWork.EventRepository.Update(x => x.Id == id, @event);
         }
     }
 }

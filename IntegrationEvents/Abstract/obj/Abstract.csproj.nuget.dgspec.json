@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {}
+    "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
+    "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
+        "projectUniqueName": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
         "projectName": "Abstract",
-        "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
-        "packagesPath": "C:\\Users\\sasin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Abstract\\obj\\",
+        "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\Abstract.csproj",
+        "packagesPath": "C:\\Users\\Majkel\\.nuget\\packages\\",
+        "outputPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Abstract\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\sasin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Majkel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
-                "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
+              "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
+                "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj"
               }
             }
           }
@@ -63,20 +63,20 @@
         }
       }
     },
-    "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
+    "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
+        "projectUniqueName": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
         "projectName": "Dal",
-        "projectPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
-        "packagesPath": "C:\\Users\\sasin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sasin\\Documents\\Studia\\Sem7\\Prog\\Projekt\\integration_events\\IntegrationEvents\\Model\\obj\\",
+        "projectPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\Dal.csproj",
+        "packagesPath": "C:\\Users\\Majkel\\.nuget\\packages\\",
+        "outputPath": "D:\\Nowe\\integration_events\\IntegrationEvents\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\sasin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Majkel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
