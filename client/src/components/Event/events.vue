@@ -22,7 +22,10 @@
     </div>
     <ul class="event__list">
       <li v-for="event in filteredEvents" :key="event.id" class="event__item">
-        <span v-if="event.userList.length" class="event__counter">{{event.userList.length}}</span>
+        <div v-if="event.userList.length" class="event__counter">
+          <font-awesome-icon class="search-icon icon__users event__counter--icon" icon="users"/>
+          <span class="event__counter--count">{{event.userList.length}}</span>
+        </div>
         <article class="event__wrapper">
           <h2 class="event__single-title">
             {{ event.name | to-uppercase }}
@@ -181,19 +184,30 @@ export default {
 }
 .event__counter {
   position: absolute;
-  top: -11px;
-  left: -9px;
-  z-index: 5;
-  color: $white;
-  text-align: center;
-  padding: 0.1rem;
-  border-radius: 25px;
-  background: #ce3333;
-  overflow: hidden;
-  line-height: 1.5rem;
-  width: 28px;
-  height: 28px;
-  box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.42);
+  bottom: 12px;
+  right: 160px;
+
+  &--icon {
+    font-size: 20px;
+    color: $white;
+  }
+
+  &--count {
+    position: absolute;
+    z-index: 5;
+    top: -23px;
+    left: -19px;
+    color: $white;
+    text-align: center;
+    padding: 0.1rem;
+    border-radius: 25px;
+    background: #ce3333;
+    overflow: hidden;
+    line-height: 1.5rem;
+    width: 28px;
+    height: 28px;
+    box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.42);
+  }
 }
 .theme-switch .wrapper {
   text-align: center;
