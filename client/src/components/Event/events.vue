@@ -23,8 +23,11 @@
     <ul class="event__list">
       <li v-for="event in filteredEvents" :key="event.id" class="event__item">
         <div v-if="event.userList.length" class="event__counter">
-          <font-awesome-icon class="search-icon icon__users event__counter--icon" icon="users"/>
-          <span class="event__counter--count">{{event.userList.length}}</span>
+          <font-awesome-icon
+            class="search-icon icon__users event__counter--icon"
+            icon="users"
+          />
+          <span class="event__counter--count">{{ event.userList.length }}</span>
         </div>
         <article class="event__wrapper">
           <h2 class="event__single-title">
@@ -36,7 +39,9 @@
           <router-link class="event__single-link" :to="`/event/${event.id}`"
             >Dowiedz się więcej</router-link
           >
-          <span v-rainbow class="event__created-date" >{{event.date | format-date}}</span>
+          <span v-rainbow class="event__created-date">{{
+            event.date | format-date
+          }}</span>
         </div>
       </li>
     </ul>
@@ -66,14 +71,16 @@ export default {
       return `${value.slice(0, 50)}...`;
     },
     formatDate(value) {
-      return moment(String(value)).format('YYYY-MM-DD hh:mm')
+      return moment(String(value)).format("YYYY-MM-DD hh:mm");
     }
   },
   directives: {
     rainbow: {
-       bind(el) {
-         el.style.background = `#${Math.random().toString().slice(2,8)}`;
-  }
+      bind(el) {
+        el.style.background = `#${Math.random()
+          .toString()
+          .slice(2, 8)}`;
+      }
     }
   },
   methods: {
@@ -89,7 +96,7 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
+    }
   },
 
   created() {
@@ -98,12 +105,17 @@ export default {
 
   computed: {
     filteredEvents() {
-      return this.events.filter(event => {
-        const currentEventName = event.name.toLowerCase();
-        const inputSearchValue = this.search.toLowerCase();
-        return currentEventName.match(inputSearchValue);
-      });
-    },
+      return this.events
+        .slice()
+        .sort(function(a, b) {
+          return a.date > b.date ? 1 : -1;
+        })
+        .filter(event => {
+          const currentEventName = event.name.toLowerCase();
+          const inputSearchValue = this.search.toLowerCase();
+          return currentEventName.match(inputSearchValue);
+        });
+    }
   }
 };
 </script>
@@ -146,6 +158,9 @@ export default {
   height: 100%;
   opacity: 0;
 }
+.event__paragraph {
+  margin: 2rem 0 1rem;
+}
 .event__wrapper {
   padding: 1.5rem 0.8rem 2rem;
   text-align: left;
@@ -173,9 +188,11 @@ export default {
 }
 .event__item {
   position: relative;
+  width: 100%;
+  max-width: 720px;
   box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.2);
   border-radius: 0.3rem;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
   transition: transform 0.4s ease-in-out, background 0.4s ease-in-out,
     color 0.4s ease-in-out;
 }
@@ -243,7 +260,7 @@ export default {
 
   &:focus {
     border-bottom-color: $navy-blue;
-    color:$navy-blue;
+    color: $navy-blue;
   }
 }
 .icon {
