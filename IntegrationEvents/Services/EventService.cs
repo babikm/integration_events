@@ -72,8 +72,8 @@ namespace Services
                 .Set(x => x.Name, @event.Name)
                 .Set(x => x.Description, @event.Description)
                 .Set(x => x.Date, @event.Date)
-                .Set(x => x.Spot, @event.Spot);
-
+                .Set(x => x.Spot, @event.Spot)
+                .Set(x => x.UserList, @event.UserList);
             _unitOfWork.EventRepository.Update(x => x.Id == id, @update);
             //_unitOfWork.EventRepository.Update(x => x.Id == id, @event);
         }
