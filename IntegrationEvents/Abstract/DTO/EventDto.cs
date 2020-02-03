@@ -19,6 +19,7 @@ namespace Abstract.DTO
         public string Description { get; set; }
         [Required]
         public DateTime Date { get; set; }
+        public string Spot { get; set; }
         public List<User> UserList{ get; set; }
 
     }

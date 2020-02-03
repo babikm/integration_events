@@ -61,7 +61,8 @@ namespace Services
                Name = x.Name,
                Date = x.Date,
                Description = x.Description,
-               UserList = x.UserList
+               UserList = x.UserList,
+               Spot = x.Spot
             }).ToList();
         }
 
@@ -75,7 +76,6 @@ namespace Services
                 .Set(x => x.Spot, @event.Spot)
                 .Set(x => x.UserList, @event.UserList);
             _unitOfWork.EventRepository.Update(x => x.Id == id, @update);
-            //_unitOfWork.EventRepository.Update(x => x.Id == id, @event);
         }
     }
 }
