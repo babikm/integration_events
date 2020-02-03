@@ -39,9 +39,9 @@
           <router-link class="event__single-link" :to="`/event/${event.id}`"
             >Dowiedz się więcej</router-link
           >
-          <span v-rainbow class="event__created-date">{{
-            event.date | format-date
-          }}</span>
+          <span v-rainbow class="event__created-date">
+            {{event.spot}} {{event.date | format-date}}
+		  </span>
         </div>
       </li>
     </ul>
@@ -202,7 +202,7 @@ export default {
 .event__counter {
   position: absolute;
   bottom: 12px;
-  right: 160px;
+  left: 15px;
 
   &--icon {
     font-size: 20px;
