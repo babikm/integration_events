@@ -68,13 +68,23 @@ namespace Services
 
         public void Update(Event @event, string id)
         {
+            var ev = _unitOfWork.EventRepository.Get(id);
+            var userList = new List<User>();
+
+            if (@event.UserList != null)
+                userList = @event.UserList;
+            else
+            {
+                userList = ev.UserList;
+            }
+
             var update = Builders<Event>
                 .Update
-                .Set(x => x.Name, @event.Name)
-                .Set(x => x.Description, @event.Description)
-                .Set(x => x.Date, @event.Date)
-                .Set(x => x.Spot, @event.Spot)
-                .Set(x => x.UserList, @event.UserList);
+                    .Set(x => x.Name, @event.Name)
+                    .Set(x => x.Description, @event.Description)
+                    .Set(x => x.Date, @event.Date)
+                    .Set(x => x.Spot, @event.Spot)
+                    .Set(x => x.UserList, userList);
             _unitOfWork.EventRepository.Update(x => x.Id == id, @update);
         }
     }
