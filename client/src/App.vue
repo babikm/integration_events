@@ -31,7 +31,11 @@ body {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
-  font-size: 1rem;
+  font-size: 16px;
+
+  @media only screen and (max-width: 640px) {
+    font-size: 12px;
+  }
 }
 
 .myApp {

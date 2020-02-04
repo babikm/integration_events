@@ -1,6 +1,6 @@
 <template>
   <div id="editEvent" class="main-container--edit">
-     <h1 class="main-container--add__title">Modyfikuj wydarzenie: {{event.Name}}</h1>
+     <h1 class="main-container--edit__title">Modyfikuj wydarzenie: {{event.Name}}</h1>
      
      <button class="single-event__button" @click="back"><font-awesome-icon class="plus-icon icon" icon="arrow-left" />Powrót</button>
     <form v-if="!submitted" class="form">
@@ -184,7 +184,11 @@ export default {
   &__input {
     display: block;
     width: 100%;
-    padding: 0.4rem;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 0.2rem;
+    background: transparent;
+    box-shadow: $default-shadow;
     &--text-area {
       min-height: 80px;
     }

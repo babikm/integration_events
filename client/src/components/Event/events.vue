@@ -40,7 +40,7 @@
             >Dowiedz się więcej</router-link
           >
           <span v-rainbow class="event__created-date">
-            {{event.spot}} {{event.date | format-date}}
+            <p class="event__created-date--spot">{{event.spot}}</p> {{event.date | format-date}}
 		  </span>
         </div>
       </li>
@@ -179,20 +179,30 @@ export default {
   z-index: -1;
   border-bottom-right-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;
+
+  &--spot {
+    display: inline-block;
+    padding: 0;
+    margin: 0 0.4rem 0 0;
+  }
 }
 .event__list {
   list-style-type: none;
   padding: 0;
   width: 100%;
-  max-width: 800px;
+  max-width: 1250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 .event__item {
   position: relative;
   width: 100%;
-  max-width: 720px;
+  max-width: 570px;
   box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.2);
-  border-radius: 0.3rem;
-  margin: 0 auto 2rem;
+  border-radius: 0.2rem;
+  margin: 0.6rem;
   transition: transform 0.4s ease-in-out, background 0.4s ease-in-out,
     color 0.4s ease-in-out;
 }
@@ -252,7 +262,7 @@ export default {
   max-width: 220px;
   background: none;
   border: none;
-  border-bottom: 0.11rem solid #00000085;
+  border-bottom: 0.07rem solid #00000085;
   color: #00000085;
   margin: 1.5rem 0 2.5rem 0;
   padding: 0.3rem 2rem 0.3rem 0;

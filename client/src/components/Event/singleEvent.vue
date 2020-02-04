@@ -1,12 +1,12 @@
 <template>
-  <div id="singleBlog" class="main-container--blog single-blog">
-    <button class="single-blog__button" @click="backToList"><font-awesome-icon class="arrow-left-icon icon-arrow" icon="arrow-left" />Powrót</button>
-    <div class="single-blog--box">
-      <h1 class="single-blog__title" >{{event.name}}</h1>
-        <p class="single-blog__paragraph">{{event.description}}</p>
-        <p class="single-blog__paragraph"><strong class="single-blog__strong">Uczestnicy: </strong>
-          <ul class="single-blog__categories-list">
-              <li class="single-blog__categories-item" v-for="user in event.userList" :key="user.userName">
+  <div id="singleEvent" class="main-container--event single-event">
+    <button class="single-event__button" @click="backToList"><font-awesome-icon class="arrow-left-icon icon-arrow" icon="arrow-left" />Powrót</button>
+    <div class="single-event--box">
+      <h1 class="single-event__title" >{{event.name}}</h1>
+        <p class="single-event__paragraph">{{event.description}}</p>
+        <p class="single-event__paragraph"><strong class="single-event__strong">Uczestnicy: </strong>
+          <ul class="single-event__users-list">
+              <li class="single-event__users-item" v-for="user in event.userList" :key="user.userName">
                   {{user.userName}} - {{user.firstName}} {{user.lastName}} 
               </li>
           </ul>
@@ -128,18 +128,44 @@ export default {
     }
     
 }
-.single-blog {
+.single-event {
     width: 100%;
     max-width: 900px;
     margin: 2rem auto;
     text-align: left;
+    &__paragraph {
+      margin: 2rem 0 0;
+    }
+    &__strong {
+      margin: 2rem 0;
+      font-size: 1.1rem;
+    }
+    &__users-list {
+      list-style-type: none;
+    }
+    &__users-item {
+      padding: 0.3rem;
+      position: relative;
+      &::before {
+        background: url('../..//assets/images/check-green.svg');
+        background-size: contain;
+        display: inline-block;
+        content: "";
+        position: absolute;
+        top: 0.3rem;
+        left: -1.4rem;
+        width: 1rem;
+        height: 1rem;
+      }
+    }
     &--box {
       padding: 1rem;
       box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.2);
+      border-radius: 0.2rem;
     }
     &__button {
       @include default-button($navy-blue);
-      margin: 2rem 0 1.5rem 0;
+      margin: 4.5rem 0 1.5rem 0;
       &:hover > svg {
           animation: moveYe .8s infinite;
       }

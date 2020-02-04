@@ -85,6 +85,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+@import "@/assets/styles/variables.scss";
 /* Logo animation*/
 
 .duos_kolos_logo,
@@ -131,8 +132,9 @@ export default {
   }
 
   &__about-list {
-    background: #324960;
-    color: #fff;
+    background: $navy-blue;
+    color: $white;
+    border-radius: 0.2rem;
     padding: 1.5rem 1rem;
     position: absolute;
     left: -200px;

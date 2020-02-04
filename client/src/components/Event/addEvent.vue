@@ -175,7 +175,11 @@ export default {
   &__input {
     display: block;
     width: 100%;
-    padding: 0.4rem;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 0.2rem;
+    background: transparent;
+    box-shadow: $default-shadow;
     &--text-area {
       min-height: 80px;
     }
@@ -201,7 +205,8 @@ svg {
   max-width: 400px;
   margin-top: 2.5rem;
   padding: 0.4rem 1rem;
-  box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.2);
+  box-shadow: $default-shadow;
+  border-radius: 0.2rem;
   text-align: left;
   overflow-wrap: break-word;
   &__content {
