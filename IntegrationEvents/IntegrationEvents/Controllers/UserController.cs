@@ -18,7 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace WebApp.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase

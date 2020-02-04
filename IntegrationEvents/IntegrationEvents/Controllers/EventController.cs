@@ -29,24 +29,8 @@ namespace WebApp.Controllers
         [HttpPost("Join/{eventId}/{userId}")]
         public IActionResult Join(string userId, string eventId)
         {
-            User user = new User();
-            user = _userService.Get(userId);
-            var @event = _eventService.Get(eventId);
-
-            bool isExist = false;
-            foreach (var item in user.EventJoined)
-            {
-                if (item == eventId)
-                    isExist = true;
-            }
-            if(!isExist)
-            {
-                @event.UserList.Add(user);
-                user.EventJoined.Add(eventId);
-                _userService.Update(user, user.Id);
-                _eventService.Update(@event, @event.Id);
-                return Ok("Dołączyłeś do wydarzenia!");
-            }
+            if(_eventService.Join(userId, eventId))
+                return Ok("Dołączyłeś do wydarzenia!");            
             return BadRequest("Już wcześniej dołączyłeś do tego wydarzenia!");
         }
         // GET: api/Event

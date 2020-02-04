@@ -48,6 +48,31 @@ namespace Services
             _unitOfWork.EventRepository.Delete(id);
         }
 
+        public bool Join(string userId, string eventId)
+        {
+            User user = new User();
+            user = _unitOfWork.UserRepository.Get(userId);
+            var @event = _unitOfWork.EventRepository.Get(eventId);
+            bool isExist = false;
+
+            foreach (var item in user.EventJoined)
+            {
+                if (item == eventId)
+                    isExist = true;
+            }
+
+            if(!isExist)
+            {
+                @event.UserList.Add(user);
+                user.EventJoined.Add(eventId);                
+                _unitOfWork.UserRepository.Update(x => x.Id == user.Id, user);
+                _unitOfWork.EventRepository.Update(x =>x.Id == @event.Id, @event);
+                return true;
+            }
+
+            return false;
+        }
+
         public Event Get(string id)
         {
             return _unitOfWork.EventRepository.Get(id);
