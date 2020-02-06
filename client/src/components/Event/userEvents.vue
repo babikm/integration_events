@@ -134,6 +134,7 @@ export default {
 .event__wrapper {
   padding: 1.5rem 0.8rem 2rem;
   text-align: left;
+  background: #fff;
 }
 .event__more-wrapper {
   display: flex;

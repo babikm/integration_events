@@ -185,7 +185,7 @@ export default {
     padding: 0.6rem;
     border: none;
     border-radius: 0.2rem;
-    background: transparent;
+    background: #fff;
     box-shadow: $default-shadow;
     &--text-area {
       min-height: 80px;
@@ -216,6 +216,7 @@ svg {
   max-width: 400px;
   margin-top: 2.5rem;
   padding: 0.4rem 1rem;
+  background: #fff;
   box-shadow: $default-shadow;
   border-radius: 0.2rem;
   text-align: left;

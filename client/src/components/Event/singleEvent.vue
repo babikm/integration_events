@@ -176,6 +176,7 @@ export default {
       padding: 1rem;
       box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.2);
       border-radius: 0.2rem;
+      background: #fff;
     }
     &__button {
       @include default-button($navy-blue);

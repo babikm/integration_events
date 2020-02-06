@@ -147,6 +147,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "@/assets/styles/variables.scss";
+
 .register {
   display: flex;
   flex-direction: column;
@@ -243,7 +245,7 @@ label {
   padding: 0.7rem 2.5rem;
   border: none;
   border-radius: 0px 8px;
-  background-color: #4fc08d;
+  background-color: #324960f5;
   color: #fff;
   cursor: pointer;
   transition: box-shadow 0.5s ease-in-out;
@@ -251,7 +253,7 @@ label {
     box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.2);
   }
   &:active {
-    background-color: #44ae7e;
+    background-color: darken(#324960f5, 10%);
   }
 }
 

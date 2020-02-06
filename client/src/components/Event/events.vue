@@ -120,7 +120,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/styles/variables.scss";
 
 @keyframes lds-ring {
@@ -164,6 +164,7 @@ export default {
 .event__wrapper {
   padding: 1.5rem 0.8rem 2rem;
   text-align: left;
+  background: #fff;
 }
 .event__more-wrapper {
   display: flex;
@@ -182,7 +183,8 @@ export default {
 
   &--spot {
     display: inline-block;
-    padding: 0;
+    border-right: 1px solid #ffffff59;
+    padding: 0 0.6rem 0 0;
     margin: 0 0.4rem 0 0;
   }
 }

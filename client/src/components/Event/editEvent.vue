@@ -187,7 +187,7 @@ export default {
     padding: 0.6rem;
     border: none;
     border-radius: 0.2rem;
-    background: transparent;
+    background: #fff;
     box-shadow: $default-shadow;
     &--text-area {
       min-height: 80px;
