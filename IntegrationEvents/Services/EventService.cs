@@ -50,8 +50,8 @@ namespace Services
 
         public bool Join(string userId, string eventId)
         {
-            User user = new User();
-            user = _unitOfWork.UserRepository.Get(userId);
+            //User user = new User();
+            var user = _unitOfWork.UserRepository.Get(userId);
             var @event = _unitOfWork.EventRepository.Get(eventId);
             bool isExist = false;
 
@@ -70,6 +70,28 @@ namespace Services
                 return true;
             }
 
+            return false;
+        }
+
+        public bool RemoveJoined(string userId, string eventId)
+        {
+            var user = _unitOfWork.UserRepository.Get(userId);
+            var @event = _unitOfWork.EventRepository.Get(eventId);
+            foreach (var item in user.EventJoined)
+            {
+                if (item == eventId)
+                {
+                    var list = @event.UserList.Where(x => x.Id != userId).ToList();                 
+                    user.EventJoined.Remove(eventId);
+                    var update = Builders<Event>
+                            .Update
+                                .Set(x => x.UserList, list);
+                    _unitOfWork.EventRepository.Update(x => x.Id == @event.Id, update);
+                    _unitOfWork.UserRepository.Update(x => x.Id == user.Id, user);
+                    return true;
+
+                }
+            }
             return false;
         }
 
@@ -112,5 +134,7 @@ namespace Services
                     .Set(x => x.UserList, userList);
             _unitOfWork.EventRepository.Update(x => x.Id == id, @update);
         }
+
+        
     }
 }

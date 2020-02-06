@@ -15,6 +15,7 @@ namespace Abstract
         void Delete(string id);
         void Update(Event @event,string id);
         bool Join(string userId, string eventId);
+        bool RemoveJoined(string userId, string eventId);
 
     }
 }

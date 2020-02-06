@@ -33,6 +33,15 @@ namespace WebApp.Controllers
                 return Ok("Dołączyłeś do wydarzenia!");            
             return BadRequest("Już wcześniej dołączyłeś do tego wydarzenia!");
         }
+
+        [HttpPost("RemoveJoin/{eventId}/{userId}")]
+        public IActionResult RemoveJoin(string userId, string eventId)
+        {
+            if (_eventService.IsJoined(userId, eventId))
+                return Ok("Wypisałeś się!");
+            return BadRequest("Nie jesteś zapisany do tego wydarzenia!");
+        }
+
         // GET: api/Event
         [HttpGet]
         public IEnumerable<EventDto> Get()
