@@ -11,6 +11,10 @@
               </li>
           </ul>
         </p>
+        <p class="single-event__paragraph single-event__paragraph--info">
+          <strong class="single-event__strong">Start</strong>
+          {{event.spot}} {{event.date | format-date}} 🎯
+        </p>
     </div>
     <div class="buttons-wrapper">
       <button title="Dołącz" v-if="canHeJoin" class="my-button join" @click="joinTheEvent">Dołącz
@@ -31,6 +35,7 @@
 
 <script>
 import { eventUrl, getUserDataUrl } from "@/variables";
+import * as moment from "moment/moment";
 
 export default {
    name: "singleEvent",
@@ -120,6 +125,11 @@ export default {
             })
         },
     },
+    filters: {
+    formatDate(value) {
+      return moment(String(value)).format("YYYY-MM-DD hh:mm");
+    }
+  },
     created() {
       this.getEvent();
       this.getUserData();
@@ -149,6 +159,9 @@ export default {
     text-align: left;
     &__paragraph {
       margin: 2rem 0 0;
+      &--info {
+        text-align: right;
+      }
     }
     &__strong {
       margin: 2rem 0;
