@@ -180,6 +180,7 @@ export default {
   &__label {
     display: block;
     margin-bottom: 0.4rem;
+    font-weight: bold;
   }
   &__input {
     display: block;
