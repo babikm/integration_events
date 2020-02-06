@@ -113,6 +113,19 @@ namespace Services
             }).ToList();
         }
 
+        public IEnumerable<Event> GetUserEvents(string userId)
+        {
+            var user = _unitOfWork.UserRepository.Get(userId);
+            var list = user.EventJoined.AsEnumerable();
+            List<Event> eventList = new List<Event>();
+            foreach (var item in list)
+            {
+                eventList.Add(_unitOfWork.EventRepository.Get(item));
+            }
+
+            return eventList;
+        }
+
         public void Update(Event @event, string id)
         {
             var ev = _unitOfWork.EventRepository.Get(id);

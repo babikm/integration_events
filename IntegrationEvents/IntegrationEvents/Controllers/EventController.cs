@@ -37,7 +37,7 @@ namespace WebApp.Controllers
         [HttpPost("RemoveJoin/{eventId}/{userId}")]
         public IActionResult RemoveJoin(string userId, string eventId)
         {
-            if (_eventService.IsJoined(userId, eventId))
+            if (_eventService.RemoveJoined(userId, eventId))
                 return Ok("Wypisałeś się!");
             return BadRequest("Nie jesteś zapisany do tego wydarzenia!");
         }
@@ -54,6 +54,12 @@ namespace WebApp.Controllers
         public Event Get(string id)
         {
             return _eventService.Get(id);
+        }
+
+        [HttpGet("GetUserEvents/{userId}")]
+        public IEnumerable<Event> GetUserEvents(string userId)
+        {
+            return _eventService.GetUserEvents(userId);
         }
 
         // POST: api/Event
