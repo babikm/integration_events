@@ -16,6 +16,9 @@
       <button title="Dołącz" v-if="canHeJoin" class="my-button join" @click="joinTheEvent">Dołącz
         <font-awesome-icon class="icon" icon="check"/>
       </button>
+      <button title="Dołącz" v-if="!canHeJoin" class="my-button leave" @click="leaveTheEvent">Opuść
+        <font-awesome-icon class="icon" icon="sign-out-alt"/>
+      </button>
       <button title="Edytuj" v-if="canHeDoAnyAction" class="my-button edit" @click="edit">Edytuj
         <font-awesome-icon class="icon" icon="eraser"/>
       </button>
@@ -68,8 +71,19 @@ export default {
             console.log(err.status);
            })
         },
-        backToList() {
+        leaveTheEvent() {
+           this.$http.post(`${eventUrl}/RemoveJoin/${this.eventId}/${this.userId}`)
+          .then(response => {
+            alert(response.body)
             this.$router.push( '/' );
+            })
+          .catch(err => {
+            alert(err.body);
+            console.log(err.status);
+           })
+        },
+        backToList() {
+            this.$router.go(-1);
         },
         getEvent() {
            this.$http.get(`${eventUrl}/${this.eventId}`)
@@ -194,6 +208,10 @@ export default {
 
 .join {
  @include default-button($dark-green);
+}
+
+.leave {
+  @include default-button($dark-orange);
 }
 
 .edit {

@@ -37,7 +37,9 @@ const actions = {
         router.push({ path: '/' });
         router.go(0);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        alert(err.body.message);
+      });
   },
 
   logout({ commit }) {

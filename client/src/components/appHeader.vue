@@ -19,27 +19,36 @@
           <router-link class="navigation__link" to="/">Wydarzenia</router-link>
         </li>
         <li class="navigation__item">
-          <router-link class="navigation__link" to="/addEvent">Dodaj wydarzenie</router-link>
+          <router-link class="navigation__link" to="/addEvent"
+            >Dodaj wydarzenie</router-link
+          >
         </li>
         <li class="current-user">
-          <font-awesome-icon class="icon user" icon="user"/>
+          <font-awesome-icon class="icon user" icon="user" />
           <ul class="current-user__about-list">
             <li class="current-user__about-item">
               <strong>
-                <font-awesome-icon class="icon user-icon" icon="user-shield"/>
+                <font-awesome-icon class="icon user-icon" icon="user-shield" />
               </strong>
-              {{user.userName}}
+              {{ user.userName }}
             </li>
             <li class="current-user__about-item">
               <strong>
-                <font-awesome-icon class="icon user-icon" icon="signature"/>
+                <font-awesome-icon class="icon user-icon" icon="signature" />
               </strong>
-              {{user.firstName}} {{user.lastName}}
+              {{ user.firstName }} {{ user.lastName }}
+            </li>
+            <li class="current-user__about-item current-user__about-item--last">
+              <router-link class="current-user--events" to="/userEvents"
+                >Moje wydarzenia
+                <font-awesome-icon class="icon icon-angle" icon="angle-double-right" />
+              </router-link>
             </li>
           </ul>
         </li>
-        <button class="navigation__logout" @click="logout">Wyloguj
-          <font-awesome-icon class="icon" icon="door-open"/>
+        <button class="navigation__logout" @click="logout">
+          Wyloguj
+          <font-awesome-icon class="icon" icon="door-open" />
         </button>
       </ul>
     </nav>
@@ -47,14 +56,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
   name: "appHeader",
 
   data() {
     return {
-      user: {},
+      user: {}
     };
   },
 
@@ -64,7 +73,7 @@ export default {
     },
     menuSelector() {
       return document.querySelector(".navigation__list");
-    },
+    }
   },
   created() {
     this.user = this.$store.getters.getCurrentUser;
@@ -77,9 +86,9 @@ export default {
       this.menuSelector.classList.remove("navigation__list--visible");
     },
     logout() {
-      this.$store.dispatch('logout');
-    },
-  },
+      this.$store.dispatch("logout");
+    }
+  }
 };
 </script>
 
@@ -125,6 +134,16 @@ export default {
   margin: 0 0 0 3rem;
   position: relative;
 
+  &--events {
+    @include default-button($dark-red);
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+  }
+
+  &--events .icon-angle {
+    margin-left: .3rem;
+  }
+
   &:hover > &__about-list {
     transform: translateX(0px);
     opacity: 1;
@@ -152,6 +171,11 @@ export default {
   &__about-item {
     border-bottom: 1px solid #ffffff26;
     padding-bottom: 0.3rem;
+
+    &--last {
+      border-bottom: none;
+      padding: 0.4rem 0 0;
+    }
   }
 
   &__about-item + &__about-item {

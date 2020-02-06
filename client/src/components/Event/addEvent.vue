@@ -28,6 +28,7 @@
         </ul>
       </p>
       <button class="form__send-button" @click.prevent="post"><font-awesome-icon class="plus-icon icon" icon="plus" />Dodaj wydarzenie</button>
+      <button class="form__clear-button" @click.prevent="clear"><font-awesome-icon class="plus-icon icon" icon="eraser" />Wyczyść</button>
     </form>
 
     <div class="after-post" v-if="submitted">
@@ -123,6 +124,12 @@ export default {
           console.log(err)
           })
       }
+    },
+    clear() {
+      this.event.Name = "",
+      this.event.Description = "",
+      this.event.Date = "",
+      this.event.Spot = ""
     }
   }
 };
@@ -190,6 +197,10 @@ export default {
     &:hover > svg {
       animation: rotateYe 1s infinite;
     }
+  }
+  &__clear-button {
+    margin: 1rem 0 0 0.5rem;
+   @include default-button($dark-grey);
   }
   &__errors {
     margin-top: 2rem;
