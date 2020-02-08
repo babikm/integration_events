@@ -20,7 +20,7 @@
       <button title="Dołącz" v-if="canHeJoin" class="my-button join" @click="joinTheEvent">Dołącz
         <font-awesome-icon class="icon" icon="check"/>
       </button>
-      <button title="Dołącz" v-if="!canHeJoin" class="my-button leave" @click="leaveTheEvent">Opuść
+      <button title="Opuść" v-if="!canHeJoin" class="my-button leave" @click="leaveTheEvent">Opuść
         <font-awesome-icon class="icon" icon="sign-out-alt"/>
       </button>
       <button title="Edytuj" v-if="canHeDoAnyAction" class="my-button edit" @click="edit">Edytuj
@@ -179,7 +179,7 @@ export default {
         display: inline-block;
         content: "";
         position: absolute;
-        top: 0.3rem;
+        top: 0.6rem;
         left: -1.4rem;
         width: 1rem;
         height: 1rem;

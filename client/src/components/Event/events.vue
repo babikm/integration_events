@@ -1,47 +1,65 @@
 <template>
   <div id="events" class="main-container--show">
     <h1 class="event__title">Aktualne wydarzenia</h1>
-    <p class="wrapper wrapper-search--events">
-      <input
-        class="search-input"
-        type="text"
-        id="search"
-        name="search"
-        v-model="search"
-        placeholder="szukaj..."
-      />
-      <label for="search"
-        ><font-awesome-icon class="search-icon icon" icon="search"
-      /></label>
-    </p>
+    <div class="wrapper-search--box">
+      <p class="wrapper wrapper-search--events">
+        <input
+          class="search-input"
+          type="text"
+          id="name"
+          name="name"
+          v-model="searchName"
+          placeholder="nazwa..."
+        />
+        <label for="name"
+          ><font-awesome-icon class="search-icon icon" icon="search"
+        /></label>
+      </p>
+      <p class="wrapper wrapper-search--events">
+        <input
+          class="search-input"
+          type="text"
+          id="spot"
+          name="spot"
+          v-model="searchSpot"
+          placeholder="miejsce..."
+        />
+        <label for="spot"
+          ><font-awesome-icon class="search-icon icon" icon="search"
+        /></label>
+      </p>
+    </div>
     <div class="lds-ring" v-if="loading">
       <div></div>
       <div></div>
       <div></div>
       <div></div>
     </div>
-    <ul class="event__list">
-      <li v-for="event in filteredEvents" :key="event.id" class="event__item">
-        <div v-if="event.userList.length" class="event__counter">
-          <font-awesome-icon
-            class="search-icon icon__users event__counter--icon"
-            icon="users"
-          />
-          <span class="event__counter--count">{{ event.userList.length }}</span>
-        </div>
-        <article class="event__wrapper">
-          <h2 class="event__single-title">
-            {{ event.name | to-uppercase }}
+    <ul class="events__list">
+      <li v-for="event in filteredEvents" :key="event.id" class="events__item">
+        <div class="events__wrapper">
+          <h2 v-rainbow class="events__single-title">
+            {{ event.name }}
           </h2>
-          <p class="event__paragraph">{{ event.description | snippet }}</p>
-        </article>
-        <div class="event__more-wrapper">
-          <router-link class="event__single-link" :to="`/event/${event.id}`"
+          <p class="events__paragraph">{{ event.description | snippet }}</p>
+        </div>
+        <div class="events__more-wrapper">
+          <router-link class="events__single-link" :to="`/event/${event.id}`"
             >Dowiedz się więcej</router-link
           >
-          <span v-rainbow class="event__created-date">
-            <p class="event__created-date--spot">{{event.spot}}</p> {{event.date | format-date}}
-		  </span>
+          <div v-if="event.userList.length" class="events__counter">
+            <font-awesome-icon
+              class="search-icon icon__users events__counter--icon"
+              icon="users"
+            />
+            <span class="events__counter--count">{{
+              event.userList.length
+            }}</span>
+          </div>
+          <span class="events__created-date">
+            <p class="events__created-date--spot">{{ event.spot }}</p>
+            {{ event.date | format-date}}
+          </span>
         </div>
       </li>
     </ul>
@@ -57,7 +75,8 @@ export default {
   data() {
     return {
       events: [],
-      search: "",
+      searchName: "",
+      searchSpot: "",
       wide: "",
       timer: "",
       loading: false
@@ -68,18 +87,22 @@ export default {
       return value.toUpperCase();
     },
     snippet(value) {
-      return `${value.slice(0, 50)}...`;
+      return `${value.slice(0, 40)}...`;
     },
     formatDate(value) {
-      return moment(String(value)).format("YYYY-MM-DD hh:mm");
+      return moment(String(value)).format("YYYY-MM-DD");
     }
   },
   directives: {
     rainbow: {
       bind(el) {
-        el.style.background = `#${Math.random()
+        el.style.background = `linear-gradient(to right,
+        #${Math.random()
           .toString()
-          .slice(2, 8)}`;
+          .slice(3, 9)},
+        #${Math.random()
+          .toString()
+          .slice(6, 9)}`;
       }
     }
   },
@@ -111,16 +134,23 @@ export default {
           return a.date > b.date ? 1 : -1;
         })
         .filter(event => {
-          const currentEventName = event.name.toLowerCase();
-          const inputSearchValue = this.search.toLowerCase();
-          return currentEventName.match(inputSearchValue);
+         return (
+          (!this.searchName ||
+            event.name
+              .toLowerCase()
+              .includes(this.searchName.toLowerCase())) &&
+          (!this.searchSpot ||
+            event.spot
+              .toLowerCase()
+              .includes(this.searchSpot.toLowerCase()))
+        );
         });
     }
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/assets/styles/variables.scss";
 
 @keyframes lds-ring {
@@ -142,11 +172,19 @@ export default {
   align-items: center;
   transition: background 0.4s ease-in-out;
 }
-.event__title {
+.events__single-title {
+  color: $white;
   margin: 0;
-  padding: 3rem 0 4rem 0;
+  padding: 3rem 0 4rem;
+  //background: linear-gradient(to right, #4ecdc4, #556270);
 }
-.event__single-link {
+.events__paragraph {
+  margin: 0;
+  line-height: 1.7rem;
+  text-align: left;
+  padding: 4rem 1.4rem 3rem;
+}
+.events__single-link {
   text-decoration: none;
   color: transparent;
   background: transparent;
@@ -158,67 +196,75 @@ export default {
   height: 100%;
   opacity: 0;
 }
-.event__paragraph {
-  margin: 2rem 0 1rem;
-}
-.event__wrapper {
-  padding: 1.5rem 0.8rem 2rem;
-  text-align: left;
+
+.events__wrapper {
   background: #fff;
 }
-.event__more-wrapper {
+.events__more-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  background: #fff;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 90%;
+    height: 0.05rem;
+    margin: 0 auto;
+    background: #00000020;
+    position: absolute;
+    bottom: 43px;
+    left: 0;
+    right: 0;
+  }
 }
-.event__created-date {
-  opacity: 0.5;
+.events__created-date {
+  opacity: 1;
   width: 100%;
   text-align: right;
-  padding: 0.8rem;
-  color: $white;
-  z-index: -1;
-  border-bottom-right-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
-
+  padding: 0.8rem 1.2rem;
+  color: #00000060;
   &--spot {
+    color: #00000060;
     display: inline-block;
-    border-right: 1px solid #ffffff59;
+    border-right: 0.05rem solid #00000020;
     padding: 0 0.6rem 0 0;
     margin: 0 0.4rem 0 0;
   }
 }
-.event__list {
+.events__list {
   list-style-type: none;
   padding: 0;
   width: 100%;
-  max-width: 1250px;
+  max-width: 975px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
-.event__item {
+.events__item {
   position: relative;
   width: 100%;
-  max-width: 570px;
+  max-width: 300px;
   box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.2);
   border-radius: 0.2rem;
-  margin: 0.6rem;
+  overflow: hidden;
+  margin: 0.7rem;
   transition: transform 0.4s ease-in-out, background 0.4s ease-in-out,
     color 0.4s ease-in-out;
 }
-.event__item:hover {
+.events__item:hover {
   transform: translateY(-3px);
 }
-.event__counter {
+.events__counter {
   position: absolute;
   bottom: 12px;
-  left: 15px;
+  left: 30px;
 
   &--icon {
     font-size: 20px;
-    color: $white;
+    color: #00000060;
   }
 
   &--count {
@@ -244,34 +290,57 @@ export default {
 .wrapper {
   width: 100%;
   position: relative;
+  &-search--box {
+    width: 100%;
+    max-width: 975px;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2rem;
+    @media only screen and(max-width: 1049px){
+      max-width: 655px;
+    }
+    @media only screen and(max-width: 725px){
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+  }
   &-search--events {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    max-width: 360px;
+    max-width: 300px;
   }
   &-search--events .search-icon {
     width: 20px;
     height: 20px;
     position: absolute;
-    top: 30px;
-    right: 73px;
+    top: 36px;
+    right: 18px;
+    @media only screen and(max-width: 695px){
+      top: 21px;
+    }
   }
 }
 .search-input {
   width: 100%;
-  max-width: 220px;
-  background: none;
+  max-width: 280px;
+  background: $white;
+  border-radius: 0.2rem;
   border: none;
-  border-bottom: 0.07rem solid #00000085;
   color: #00000085;
   margin: 1.5rem 0 2.5rem 0;
-  padding: 0.3rem 2rem 0.3rem 0;
+  padding: 0.7rem 2.5rem 0.7rem 0.5rem;
   font-size: 1rem;
+  box-shadow: 0px 6px 12px rgba(24, 41, 67, 0.2);
+  @media only screen and(max-width: 695px){
+      margin: 0.5rem 0;
+    }
 
   &:focus {
-    border-bottom-color: $navy-blue;
     color: $navy-blue;
   }
 }

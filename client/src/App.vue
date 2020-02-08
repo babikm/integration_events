@@ -19,7 +19,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap&subset=latin-ext');
 @import "@/assets/styles/variables.scss";
+
 
 html {
   box-sizing: border-box;
@@ -44,7 +46,7 @@ body {
  background-size: $dot-space $dot-space;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   font-size: 16px;

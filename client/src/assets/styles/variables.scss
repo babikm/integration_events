@@ -23,6 +23,7 @@ $default-shadow: 0px 6px 12px rgba(24, 41, 67, 0.2);
     box-shadow: $default-shadow;
     padding: 0.8rem 1.5rem;
     color: $white;
+    font-family: 'Poppins', sans-serif;
     cursor: pointer;
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 
