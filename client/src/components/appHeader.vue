@@ -44,6 +44,12 @@
                 <font-awesome-icon class="icon icon-angle" icon="angle-double-right" />
               </router-link>
             </li>
+            <li class="current-user__about-item current-user__about-item--last">
+              <router-link class="current-user--events-created" to="/userEventsCreated"
+                >Moje wydarzenia
+                <font-awesome-icon class="icon icon-angle" icon="angle-double-right" />
+              </router-link>
+            </li>
           </ul>
         </li>
         <button class="navigation__logout" @click="logout">
@@ -138,6 +144,12 @@ export default {
     @include default-button($dark-red);
     text-decoration: none;
     padding: 0.4rem 0.8rem;
+
+    &-created {
+      @include default-button($dark-green);
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    }
   }
 
   &--events .icon-angle {
