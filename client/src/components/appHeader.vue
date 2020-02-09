@@ -40,7 +40,7 @@
             </li>
             <li class="current-user__about-item current-user__about-item--last">
               <router-link class="current-user--events" to="/userEvents"
-                >Moje wydarzenia
+                >Wydarzenia
                 <font-awesome-icon class="icon icon-angle" icon="angle-double-right" />
               </router-link>
             </li>

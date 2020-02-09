@@ -1,6 +1,6 @@
 <template>
   <div id="events" class="main-container--show">
-    <h1 class="event__title">Moje wydarzenia</h1>
+    <h1 class="event__title">Wydarzenia do których dołączyłeś</h1>
     <div class="lds-ring" v-if="loading">
       <div></div>
       <div></div>
